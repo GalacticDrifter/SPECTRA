@@ -1,0 +1,143 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <strong>B. MATERIALS</strong>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="panel-content" [formGroup]="materialsForm">
+        <!-- Purpose for Materials -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Purpose for Materials</mat-label>
+            <textarea matInput rows="4" formControlName="materialsPurpose"
+                placeholder="Briefly describe what the proposed materials will be used for">
+      </textarea>
+            <mat-hint>Address why the materials are necessary to perform the effort</mat-hint>
+        </mat-form-field>
+
+        <!-- Technical Acceptability -->
+        <div class="acceptability-section">
+            <label class="mat-label">All Types and Quantities Technically Acceptable?</label>
+            <mat-radio-group formControlName="materialsTechnicallyAcceptable"
+                class="radio-group">
+                <mat-radio-button value="yes">Yes</mat-radio-button>
+                <mat-radio-button value="no">No</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <!-- Conditional Content based on Yes/No -->
+        <div *ngIf="materialsForm.get('materialsTechnicallyAcceptable')?.value === 'yes'"
+            class="conditional-content">
+            <!-- Types Justification -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Types Justification</mat-label>
+                <textarea matInput rows="4" formControlName="typesJustification"
+                    placeholder="Explain why the types of materials proposed are appropriate">
+        </textarea>
+            </mat-form-field>
+
+            <!-- Amount Justification -->
+            <mat-form-field appearance="outline" class="full-width mt-3">
+                <mat-label>Amount Justification</mat-label>
+                <textarea matInput rows="4" formControlName="amountJustification"
+                    placeholder="Explain why the amount of materials proposed is appropriate">
+        </textarea>
+            </mat-form-field>
+        </div>
+
+        <!-- Materials Table (shown when "No" is selected) -->
+        <div *ngIf="materialsForm.get('materialsTechnicallyAcceptable')?.value === 'no'"
+            class="questioned-materials-section">
+            <div class="table-actions">
+                <button mat-button color="primary" (click)="addMaterialRow()">
+                    <mat-icon>add</mat-icon> Add Material
+                </button>
+            </div>
+
+            <table mat-table [dataSource]="materialsArray.controls" class="mat-elevation-z2">
+                <!-- Fiscal Year Column -->
+                <ng-container matColumnDef="fiscalYear">
+                    <th mat-header-cell *matHeaderCellDef>Fiscal Year</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-form-field appearance="outline" class="table-field">
+                            <input matInput [formControl]="row.get('fiscalYear')">
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <!-- Types of Materials Column -->
+                <ng-container matColumnDef="materialType">
+                    <th mat-header-cell *matHeaderCellDef>Types of Materials</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-form-field appearance="outline" class="table-field">
+                            <input matInput [formControl]="row.get('materialType')">
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <!-- Proposed Quantity Column -->
+                <ng-container matColumnDef="proposedQty">
+                    <th mat-header-cell *matHeaderCellDef>Quantity Proposed</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-form-field appearance="outline" class="table-field">
+                            <input matInput type="number"
+                                [formControl]="row.get('proposedQty')">
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <!-- Recommended Quantity Column -->
+                <ng-container matColumnDef="recommendedQty">
+                    <th mat-header-cell *matHeaderCellDef>Quantity Recommended</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-form-field appearance="outline" class="table-field">
+                            <input matInput type="number"
+                                [formControl]="row.get('recommendedQty')">
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <!-- Page Reference Column -->
+                <ng-container matColumnDef="pageRef">
+                    <th mat-header-cell *matHeaderCellDef>Proposal Page Reference</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-form-field appearance="outline" class="table-field">
+                            <input matInput [formControl]="row.get('pageRef')">
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let row; let i = index">
+                        <button mat-icon-button color="warn" (click)="removeMaterialRow(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="materialsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: materialsDisplayedColumns;"></tr>
+            </table>
+
+            <!-- Supporting Basis -->
+            <div class="supporting-basis mt-4">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Explanation for Questioned Materials</mat-label>
+                    <textarea matInput rows="4" formControlName="questionedMaterialsExplanation"
+                        placeholder="Please explain why the types and/or quantities of materials proposed are not appropriate">
+          </textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width mt-3">
+                    <mat-label>Justification for Recommended Materials</mat-label>
+                    <textarea matInput rows="4"
+                        formControlName="recommendedMaterialsJustification"
+                        placeholder="Please explain why the types and/or quantities of materials being recommended are appropriate">
+          </textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</mat-expansion-panel>

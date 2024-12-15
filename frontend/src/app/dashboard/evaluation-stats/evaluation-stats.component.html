@@ -1,0 +1,117 @@
+<!-- evaluation-stats.component.html -->
+<mat-card *ngIf="stats$ | async as stats" class="stats-container">
+    <mat-card-header>
+      <mat-card-title>Evaluation Statistics</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="stats-grid">
+        <!-- Technical Evaluation Card -->
+        <mat-card *ngIf="stats.techEval">
+          <mat-card-header>
+            <mat-card-subtitle>Technical Evaluation</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="category-content">
+            <div class="progress-section">
+              <mat-progress-spinner
+                mode="determinate"
+                [value]="stats.techEval.score"
+                diameter="100"
+              >
+              </mat-progress-spinner>
+              <div class="score">{{ stats.techEval.score }}%</div>
+            </div>
+            <div class="breakdown-section">
+              <div class="stat-row">
+                <mat-icon class="icon-success">check_circle</mat-icon>
+                <span>Met: {{ stats.techEval.met }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-error">error</mat-icon>
+                <span>Not Met: {{ stats.techEval.notMet }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-warning">warning</mat-icon>
+                <span>Partially: {{ stats.techEval.partiallyMet }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  
+        <!-- Work Products Card -->
+        <mat-card *ngIf="stats.workProducts">
+          <mat-card-header>
+            <mat-card-subtitle>Work Products Form</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="category-content">
+            <div class="progress-section">
+              <mat-progress-spinner
+                mode="determinate"
+                [value]="stats.workProducts.score"
+                diameter="100"
+              >
+              </mat-progress-spinner>
+              <div class="score">{{ stats.workProducts.score }}%</div>
+            </div>
+            <div class="breakdown-section">
+              <div class="stat-row">
+                <mat-icon class="icon-success">check_circle</mat-icon>
+                <span>Met: {{ stats.workProducts.met }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-error">error</mat-icon>
+                <span>Not Met: {{ stats.workProducts.notMet }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-warning">warning</mat-icon>
+                <span>Partially: {{ stats.workProducts.partiallyMet }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  
+        <!-- Requirements Card -->
+        <mat-card *ngIf="stats.reqResData">
+          <mat-card-header>
+            <mat-card-subtitle>Request & Requirements Compliance</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="category-content">
+            <div class="progress-section">
+              <mat-progress-spinner
+                mode="determinate"
+                [value]="stats.reqResData.score"
+                diameter="100"
+              >
+              </mat-progress-spinner>
+              <div class="score">{{ stats.reqResData.score }}%</div>
+            </div>
+            <div class="breakdown-section">
+              <div class="stat-row">
+                <mat-icon class="icon-success">check_circle</mat-icon>
+                <span>Met: {{ stats.reqResData.met }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-error">error</mat-icon>
+                <span>Not Met: {{ stats.reqResData.notMet }}</span>
+              </div>
+              <div class="stat-row">
+                <mat-icon class="icon-warning">warning</mat-icon>
+                <span>Partially: {{ stats.reqResData.partiallyMet }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  
+      <mat-divider class="my-4"></mat-divider>
+  
+      <div class="total-score" *ngIf="stats.totalScore > 0 && stats.techEval && stats.workProducts && stats.reqResData">
+        <h3>Total Evaluation Score</h3>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="stats.totalScore"
+          class="my-4"
+        ></mat-progress-bar>
+        <div class="total-number">{{ stats.totalScore }}%</div>
+      </div>
+    </mat-card-content>
+  </mat-card>

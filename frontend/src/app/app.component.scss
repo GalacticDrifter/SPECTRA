@@ -1,0 +1,85 @@
+/* app.component.scss */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  padding: 0 16px;
+
+  .spectra_logo {
+    max-height: 48px;
+    margin: 0 16px;
+  }
+
+  .example-app-name {
+    margin: 0;
+  }
+}
+
+mat-sidenav-container {
+  flex: 1;
+  margin-top: 64px; // Height of the toolbar
+
+  mat-sidenav {
+    //   width: 250px;
+
+    .entry {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+    }
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+
+  mat-sidenav-content {
+    .content-wrapper {
+      min-height: calc(100vh - 64px); // Full height minus toolbar
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+  }
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+@media screen and (max-width: 600px) {
+  mat-sidenav-container {
+    margin-top: 56px; // Smaller toolbar height on mobile
+
+    mat-sidenav-content .content-wrapper {
+      min-height: calc(100vh - 56px);
+      padding: 16px;
+    }
+  }
+}
+
+.content-wrapper {
+  padding: 20px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 800px) {
+  mat-toolbar {
+    padding-left: 16px;
+  }
+}
+
+.spacer {
+  margin: auto;
+}

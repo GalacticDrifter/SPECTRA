@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="form-container">
+  
+  <mat-card>
+    <mat-card-header style="justify-content: center;">
+      <mat-card-title>Technical Evaluation Request and Response Form</mat-card-title>
+      <mat-card-subtitle style="justify-self: center;">(Sole Source Less Than TINA Threshold - FAR
+          15.403-4)</mat-card-subtitle>
+  </mat-card-header>
+    <mat-card-content>
+        <p style="font-size:18px;font-weight:500;margin-bottom:0.25rem;text-decoration: underline;">
+            Instructions</p>
+        <div style="display: flex;margin-bottom: 0.25rem;">
+            <b style="white-space: nowrap;margin-right:1rem;">Section 1:</b>
+            <span>To be completed by the Contract Specialist prior to forwarding to Technical
+                Evaluator.</span>
+        </div>
+        <div style="display: flex;margin-bottom: 0.25rem;">
+            <b style="white-space: nowrap;margin-right:1rem;">Section 2:</b>
+            <p style="flex-grow: 1;">
+                To be completed by both the Contract Specialist and Technical Evaluator. Contract Specialist
+                checks
+                all proposal elements (labeled A-F) requiring technical evaluation prior to forwarding form
+                to
+                Technical Evaluator. If Other Direct Costs (ODCs) not listed on this form require technical
+                evaluation, Contract Specialist is to list each ODC in the appropriate space labeled “List
+                ODC” under
+                block 2D of this form. Technical Evaluator documents evaluation findings on this form by
+                completing
+                all blanks, checkboxes, tables, and questions pertaining to each proposal element checked by
+                the
+                Contract Specialist. Technical Evaluator is responsible for submitting completed evaluation
+                form to
+                the Contract Specialist by the “Required Response Date” appearing in block 1e.
+            </p>
+        </div>
+        <div style="display: flex;margin-bottom: 0.25rem;">
+            <b style="white-space: nowrap;margin-right:1rem;">Section 3:</b>
+            <p style="flex-grow: 1;">
+                To be completed by the Technical Evaluator. Technical Evaluator is required to list any
+                referenced
+                documents pertinent to the evaluation along with corresponding dates. Additionally, a copy
+                of any
+                attachments necessary to support the evaluation or necessary for making award must be
+                provided to
+                the Contract Specialist upon submission.
+            </p>
+        </div>
+        <div style="display: flex;margin-bottom: 0.25rem;">
+            <b style="white-space: nowrap;margin-right:1rem;">Section 4:</b>
+            <p style="flex-grow: 1;">
+                To be completed, signed, and dated by the Technical Evaluator prior to submitting form to
+                the Contract Specialist
+            </p>
+        </div>
+    </mat-card-content>
+</mat-card>
+    <!-- General Information Section -->
+    <app-general-information
+      [parentForm]="form">
+    </app-general-information>
+
+    <app-labor 
+        [parentForm]="form">
+    </app-labor>
+
+    <!-- Other sections will go here -->
+
+    <div class="button-container">
+      <button mat-raised-button 
+              color="primary"
+              type="submit"
+              [disabled]="!form.valid">
+        Submit
+      </button>
+    </div>
+  </form>

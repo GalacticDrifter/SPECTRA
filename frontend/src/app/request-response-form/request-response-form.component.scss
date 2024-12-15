@@ -1,0 +1,318 @@
+// Variables
+$primary-text: rgba(0, 0, 0, 0.87);
+$secondary-text: rgba(0, 0, 0, 0.6);
+$background-light: #f5f5f5;
+$border-radius: 4px;
+$spacing-unit: 8px;
+$card-max-width: 1200px;
+
+// Status Colors
+$success-color: green;
+$error-color: red;
+$warning-color: orange;
+$neutral-color: #666;
+$border-color: #ccc;
+
+// Breakpoints
+$mobile-breakpoint: 768px;
+
+// Layout & Structure
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Grid Layouts
+%grid-layout {
+  display: grid;
+  gap: $spacing-unit * 2;
+
+  @media (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-grid {
+  @extend %grid-layout;
+  grid-template-columns: 1fr 1fr;
+  padding: $spacing-unit * 2;
+}
+
+.grid-2 {
+  @extend %grid-layout;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: $spacing-unit * 3;
+}
+
+.dual-input {
+  @extend %grid-layout;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-unit;
+}
+
+.preparer-info {
+  @extend %grid-layout;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+// Common Utilities
+.full-width {
+  width: 100%;
+}
+
+// Margin Utilities
+@each $size, $multiplier in (2: 1, 3: 1.5, 4: 3) {
+  .mt-#{$size} { margin-top: $spacing-unit * $multiplier; }
+  .mb-#{$size} { margin-bottom: $spacing-unit * $multiplier; }
+}
+
+// Card Styles
+%base-card {
+  margin: $spacing-unit * 2 0;
+  max-width: $card-max-width;
+}
+
+.general-info-card,
+.evaluation-card,
+.supporting-info-card,
+.recommendation-card {
+  @extend %base-card;
+}
+
+.work-product-card {
+  margin-bottom: $spacing-unit * 2;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  &-content {
+    padding: 0;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+// Content Containers
+.card-content {
+  padding: $spacing-unit * 2;
+}
+
+.panel-content {
+  padding: $spacing-unit * 2 0;
+}
+
+// Form Elements
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit * 2;
+}
+
+.radio-group {
+  display: flex;
+  gap: $spacing-unit * 2;
+  margin: $spacing-unit * 2 0;
+}
+
+// Background Containers
+%background-container {
+  background-color: $background-light;
+  padding: $spacing-unit * 2;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit * 2;
+}
+
+.contact-group,
+.conditional-content,
+.supporting-basis,
+.reference-item,
+.attachment-item,
+.standard-attachments,
+.areas-container,
+.signature-area {
+  @extend %background-container;
+}
+
+// Typography
+%base-heading {
+  color: $primary-text;
+  font-weight: 500;
+  margin: 0;
+}
+
+.mat-label {
+  @extend %base-heading;
+  font-size: 14px;
+}
+
+.section-title {
+  @extend %base-heading;
+  font-size: 18px;
+  margin-bottom: $spacing-unit;
+}
+
+.subsection-title {
+  @extend %base-heading;
+  font-size: 16px;
+}
+
+.section-description {
+  color: $secondary-text;
+  font-size: 14px;
+  margin: 0 0 $spacing-unit * 2 0;
+}
+
+// Table Styles
+.table-actions {
+  margin-bottom: $spacing-unit * 2;
+}
+
+.table-field {
+  width: 100%;
+  // margin: -1em 0;
+}
+
+.mat-mdc-table {
+  width: 100%;
+  margin-bottom: $spacing-unit * 3;
+}
+
+.mat-mdc-table td {
+  padding: 0;
+}
+
+.column-header {
+  text-align: center;
+}
+
+.sub-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-unit;
+  font-size: 12px;
+  color: $secondary-text;
+}
+
+// Status & Messages
+%status-message {
+  margin-top: $spacing-unit;
+}
+
+.success-message {
+  @extend %status-message;
+  color: $success-color;
+}
+
+.error-message {
+  @extend %status-message;
+  color: $error-color;
+}
+
+// Icons
+.icon {
+  &_success { color: $success-color; }
+  &_error { color: $error-color; }
+  &_warning { color: $warning-color; }
+}
+
+// Signature Styles
+.signature-placeholder {
+  border: 2px dashed $border-color;
+  border-radius: $border-radius;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: $spacing-unit * 2;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.signature-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: $neutral-color;
+}
+
+.signature-text {
+  color: $neutral-color;
+  margin-top: $spacing-unit;
+  font-size: 14px;
+}
+
+// File Upload
+.file-upload-field {
+  display: flex;
+  align-items: center;
+  gap: $spacing-unit * 2;
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.upload-button {
+  min-width: 120px;
+}
+
+// Lists and Headers
+.reference-list,
+.other-attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit * 2;
+}
+
+%flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-unit * 2;
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-unit;
+  }
+}
+
+.reference-header,
+.attachment-header,
+.other-attachments-header {
+  @extend %flex-header;
+}
+
+// Action Containers
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    min-width: 150px;
+  }
+}
+
+// Chip Styles
+.area-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-unit;
+}
+
+.reqResTableContainer {
+  width: 100%;
+  overflow-x:auto;
+}

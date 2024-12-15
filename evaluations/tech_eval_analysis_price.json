@@ -1,0 +1,41 @@
+{
+    "name": "Price Analysis Methods",
+    "additional_info": "(Required for All efforts **Looks at total Price & is in order of regulatory preference**)",
+    "methods": [
+        {
+            "id": 0,
+            "name": "Comparison",
+            "description": "Can the total price of the effort be compared to other offerors responding to the solicitation? If so, how do the two compare? Can adjustments be made to make them more comparable?"
+        },
+        {
+            "id": 1,
+            "name": "Historical/Actuals",
+            "query": "Can the total price of the effort be compared to historical prices paid? If so, how do the two compare (recency, T&Cs, etc.)? Can adjustments be made to make them more comparable?"
+        },
+        {
+            "id": 2,
+            "name": "Parametrics",
+            "query": "This is the use of Cost Estimating Relationships (or mathematical formulas) focused on cost drivers/design characteristics (speed, range, weight, thrust). CERs are DCMA negotiated & statistically sound (sufficient sample size, etc.) and usually non-negotiable rates, but applicability/underlying assumptions of the formula development can be questioned; ERs are developing statistical significance; others are managerial judgment without statistical support. Do parametric estimating methods (price per yard/pound/hour, etc.) indicate inconsistencies/bias in pricing? If so, how were the inconsistencies explained and why were they acceptable?"
+        },
+        {
+            "id": 3,
+            "name": "Published Pricing",
+            "query": "Comparison with competitive published price lists, published market prices of commodities, similar indexes, and discount or rebate arrangements."
+        },
+        {
+            "id": 4,
+            "name": "IGCEs",
+            "query": "Comparison of proposed prices with independent Government cost estimates. Does the IGCE need to be updated for recency or adjusted for scope changes?"
+        },
+        {
+            "id": 5,
+            "name": "Market Research",
+            "query": "Comparison of proposed prices with prices obtained through market research for the same or similar items. Provide screenshots and/or website."
+        },
+        {
+            "id": 6,
+            "name": "Other than Certified Data",
+            "query": "Analysis of data other than certified cost or pricing data (as defined at 2.101) provided by the offeror. Quality, complexity, precision, difficulty?"
+        }
+    ]
+}

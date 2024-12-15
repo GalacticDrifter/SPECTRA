@@ -1,0 +1,54 @@
+.summary-panel {
+    margin: 1rem 0;
+  }
+
+  .summaries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .summary-card {
+    width: 100%;
+    
+    mat-card-header {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .individual-summaries {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .markdown-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    ::ng-deep {
+      h1, h2, h3, h4, h5 {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      ul, ol {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin: 0.25rem 0;
+      }
+
+      strong {
+        font-weight: 500;
+      }
+
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }

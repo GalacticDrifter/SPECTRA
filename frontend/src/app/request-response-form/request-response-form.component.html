@@ -1,0 +1,1946 @@
+<div class="form-container" *ngIf="form">
+  <mat-card style="width: 100%">
+    <mat-card-header style="justify-content: center">
+      <mat-card-title
+        >Technical Evaluation Request and Response Form</mat-card-title
+      >
+      <mat-card-subtitle style="justify-self: center"
+        >(Sole Source Less Than TINA Threshold - FAR
+        15.403-4)</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card>
+        <mat-card-content>
+          <p
+            style="
+              font-size: 18px;
+              font-weight: 500;
+              margin-bottom: 0.25rem;
+              text-decoration: underline;
+            "
+          >
+            Instructions
+          </p>
+          <div style="display: flex; margin-bottom: 0.25rem">
+            <b style="white-space: nowrap; margin-right: 1rem">Section 1:</b>
+            <span
+              >To be completed by the Contract Specialist prior to forwarding to
+              Technical Evaluator.</span
+            >
+          </div>
+          <div style="display: flex; margin-bottom: 0.25rem">
+            <b style="white-space: nowrap; margin-right: 1rem">Section 2:</b>
+            <p style="flex-grow: 1">
+              To be completed by both the Contract Specialist and Technical
+              Evaluator. Contract Specialist checks all proposal elements
+              (labeled A-F) requiring technical evaluation prior to forwarding
+              form to Technical Evaluator. If Other Direct Costs (ODCs) not
+              listed on this form require technical evaluation, Contract
+              Specialist is to list each ODC in the appropriate space labeled
+              “List ODC” under block 2D of this form. Technical Evaluator
+              documents evaluation findings on this form by completing all
+              blanks, checkboxes, tables, and questions pertaining to each
+              proposal element checked by the Contract Specialist. Technical
+              Evaluator is responsible for submitting completed evaluation form
+              to the Contract Specialist by the “Required Response Date”
+              appearing in block 1e.
+            </p>
+          </div>
+          <div style="display: flex; margin-bottom: 0.25rem">
+            <b style="white-space: nowrap; margin-right: 1rem">Section 3:</b>
+            <p style="flex-grow: 1">
+              To be completed by the Technical Evaluator. Technical Evaluator is
+              required to list any referenced documents pertinent to the
+              evaluation along with corresponding dates. Additionally, a copy of
+              any attachments necessary to support the evaluation or necessary
+              for making award must be provided to the Contract Specialist upon
+              submission.
+            </p>
+          </div>
+          <div style="display: flex; margin-bottom: 0.25rem">
+            <b style="white-space: nowrap; margin-right: 1rem">Section 4:</b>
+            <p style="flex-grow: 1">
+              To be completed, signed, and dated by the Technical Evaluator
+              prior to submitting form to the Contract Specialist
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <form [formGroup]="form">
+        <mat-card class="general-info-card">
+          <mat-card-header>
+            <mat-card-title>1. General Information</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content [formGroup]="generalInformation">
+            <div class="form-grid">
+              <!-- Left Column -->
+              <div class="form-column">
+                <mat-form-field
+                  appearance="outline"
+                  class="full-width"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>a. Program Title</mat-label>
+                  <input
+                    matInput
+                    formControlName="programTitle"
+                    placeholder="Enter program title"
+                  />
+                </mat-form-field>
+
+                <div class="contact-group">
+                  <h3>b. Contracts POC</h3>
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractsPOC"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="name"
+                      placeholder="Enter name"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractsPOC"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Code</mat-label>
+                    <input
+                      matInput
+                      formControlName="code"
+                      placeholder="Enter code"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractsPOC"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Telephone</mat-label>
+                    <input
+                      matInput
+                      formControlName="telephone"
+                      placeholder="Enter telephone"
+                      type="tel"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field
+                  appearance="outline"
+                  class="full-width"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>c. Contract No.</mat-label>
+                  <input
+                    matInput
+                    formControlName="contractNumber"
+                    placeholder="Enter contract number"
+                  />
+                </mat-form-field>
+              </div>
+
+              <!-- Right Column -->
+              <div class="form-column">
+                <mat-form-field
+                  appearance="outline"
+                  class="full-width"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>d. Proposal Title/No.</mat-label>
+                  <input
+                    matInput
+                    formControlName="proposalTitle"
+                    placeholder="Enter proposal title/number"
+                  />
+                </mat-form-field>
+
+                <mat-form-field
+                  appearance="outline"
+                  class="full-width"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>e. Required Response Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="responsePicker"
+                    formControlName="responseDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="responsePicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #responsePicker></mat-datepicker>
+                </mat-form-field>
+
+                <div class="contact-group">
+                  <h3>f. Contractor</h3>
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractor"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Company Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="companyName"
+                      placeholder="Enter company name"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractor"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>City</mat-label>
+                    <input
+                      matInput
+                      formControlName="city"
+                      placeholder="Enter city"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="contractor"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>State</mat-label>
+                    <input
+                      matInput
+                      formControlName="state"
+                      placeholder="Enter state"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field
+                  appearance="outline"
+                  class="full-width"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>g. Delivery/Period of Performance</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="deliveryPicker"
+                    formControlName="deliveryPeriod"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="deliveryPicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #deliveryPicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="evaluation-card">
+          <mat-card-header>
+            <mat-card-title>2. Technical Evaluation Findings</mat-card-title>
+            <mat-card-subtitle
+              >Please evaluate the following portions of the contractor's
+              proposal for technical sufficiency</mat-card-subtitle
+            >
+          </mat-card-header>
+
+          <mat-card-content>
+            <!-- Labor Section -->
+            <mat-expansion-panel expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>A. LABOR</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content">
+                <!-- Labor Hours Summary -->
+                <div class="hours-summary grid-2">
+                  <mat-form-field
+                    appearance="outline"
+                    formGroupName="technicalEvalForm"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Proposed Hours</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="proposedHours"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    formGroupName="technicalEvalForm"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Recommended Hours</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="recommendedHours"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <!-- Technical Acceptability -->
+                <div class="acceptability-section">
+                  <label class="mat-label">All Technically Acceptable?</label>
+                  <mat-radio-group
+                    [formControl]="laborTechnicallyAcceptable"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <!-- Conditional Content based on Yes/No -->
+                <div
+                  *ngIf="
+                    technicalEvalForm.get('laborTechnicallyAcceptable')
+                      ?.value === 'yes'
+                  "
+                  class="conditional-content"
+                >
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width"
+                    formGroupName="technicalEvalForm"
+                  >
+                    <mat-label>Basis for Acceptance</mat-label>
+                    <mat-select formControlName="acceptanceBasis">
+                      <mat-option value="sameOrSimilar"
+                        >Same or Similar Effort</mat-option
+                      >
+                      <mat-option value="estimatingMethod"
+                        >Estimating Method/Software Model</mat-option
+                      >
+                      <mat-option value="expertise"
+                        >Subject Matter Expertise</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- Conditional fields based on selection -->
+                  <ng-container
+                    [ngSwitch]="technicalEvalForm.get('acceptanceBasis')?.value"
+                  >
+                    <mat-form-field
+                      *ngSwitchCase="'sameOrSimilar'"
+                      appearance="outline"
+                      class="full-width"
+                      formGroupName="technicalEvalForm"
+                      subscriptSizing="dynamic"
+                    >
+                      <mat-label>Associated Contract Number</mat-label>
+                      <input matInput formControlName="similarContractNumber" />
+                    </mat-form-field>
+
+                    <mat-form-field
+                      *ngSwitchCase="'estimatingMethod'"
+                      appearance="outline"
+                      class="full-width"
+                      formGroupName="technicalEvalForm"
+                      subscriptSizing="dynamic"
+                    >
+                      <mat-label>Methodology and Findings</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="estimateMethodology"
+                      ></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      *ngSwitchCase="'expertise'"
+                      appearance="outline"
+                      class="full-width"
+                      formGroupName="technicalEvalForm"
+                      subscriptSizing="dynamic"
+                    >
+                      <mat-label>Expert Credentials</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="expertCredentials"
+                      ></textarea>
+                    </mat-form-field>
+                  </ng-container>
+                </div>
+
+                <!-- Labor Hours Table (shown when "No" is selected) -->
+                <div
+                  *ngIf="
+                    technicalEvalForm.get('laborTechnicallyAcceptable')
+                      ?.value === 'no'
+                  "
+                  class="questioned-hours-section"
+                >
+                  <div class="table-actions">
+                    <button
+                      mat-button
+                      color="primary"
+                      (click)="addLaborHourRow()"
+                    >
+                      <mat-icon>add</mat-icon> Add Row
+                    </button>
+                  </div>
+                  <div class="reqResTableContainer">
+                    <table
+                      mat-table
+                      [dataSource]="laborHoursArray.controls"
+                      class="mat-elevation-z2"
+                    >
+                      <!-- Fiscal Year Column -->
+                      <ng-container matColumnDef="fiscalYear">
+                        <th mat-header-cell *matHeaderCellDef>Fiscal Year</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('fiscalYear')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Labor Category Column -->
+                      <ng-container matColumnDef="laborCategory">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Labor Category
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('laborCategory')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Proposed Hours Column -->
+                      <ng-container matColumnDef="proposedHours">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Labor Hours Proposed
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="number"
+                              [formControl]="row.get('proposedHours')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Recommended Hours Column -->
+                      <ng-container matColumnDef="recommendedHours">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Recommended Labor Hours
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="number"
+                              [formControl]="row.get('recommendedHours')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Actions Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row; let i = index">
+                          <button
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeLaborHourRow(i)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr
+                        mat-header-row
+                        *matHeaderRowDef="laborDisplayedColumns"
+                      ></tr>
+                      <tr
+                        mat-row
+                        *matRowDef="let row; columns: laborDisplayedColumns"
+                      ></tr>
+                    </table>
+                  </div>
+
+                  <!-- Supporting Basis -->
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width mt-4"
+                    formGroupName="technicalEvalForm"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Explanation for Questioned Hours</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="questionedHoursExplanation"
+                    ></textarea>
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    class="full-width mt-3"
+                    formGroupName="technicalEvalForm"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Justification for Recommended Hours</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="recommendedHoursJustification"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Materials Section -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>B. MATERIALS</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content" [formGroup]="materialsForm">
+                <!-- Purpose for Materials -->
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Purpose for Materials</mat-label>
+                  <textarea
+                    matInput
+                    rows="4"
+                    formControlName="materialsPurpose"
+                    placeholder="Briefly describe what the proposed materials will be used for"
+                  >
+                  </textarea>
+                  <mat-hint
+                    >Address why the materials are necessary to perform the
+                    effort</mat-hint
+                  >
+                </mat-form-field>
+
+                <!-- Technical Acceptability -->
+                <div class="acceptability-section">
+                  <label class="mat-label"
+                    >All Types and Quantities Technically Acceptable?</label
+                  >
+                  <mat-radio-group
+                    formControlName="materialsTechnicallyAcceptable"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <!-- Conditional Content based on Yes/No -->
+                <div
+                  *ngIf="
+                    materialsForm.get('materialsTechnicallyAcceptable')
+                      ?.value === 'yes'
+                  "
+                  class="conditional-content"
+                >
+                  <!-- Types Justification -->
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Types Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="typesJustification"
+                      placeholder="Explain why the types of materials proposed are appropriate"
+                    >
+                    </textarea>
+                  </mat-form-field>
+
+                  <!-- Amount Justification -->
+                  <mat-form-field appearance="outline" class="full-width mt-3">
+                    <mat-label>Amount Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="amountJustification"
+                      placeholder="Explain why the amount of materials proposed is appropriate"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+
+                <!-- Materials Table (shown when "No" is selected) -->
+                <div
+                  *ngIf="
+                    materialsForm.get('materialsTechnicallyAcceptable')
+                      ?.value === 'no'
+                  "
+                  class="questioned-materials-section"
+                >
+                  <div class="table-actions">
+                    <button
+                      mat-button
+                      color="primary"
+                      (click)="addMaterialRow()"
+                    >
+                      <mat-icon>add</mat-icon> Add Material
+                    </button>
+                  </div>
+
+                  <div class="reqResTableContainer">
+                    <table
+                      mat-table
+                      [dataSource]="materialsArray.controls"
+                      class="mat-elevation-z2"
+                    >
+                      <!-- Fiscal Year Column -->
+                      <ng-container matColumnDef="fiscalYear">
+                        <th mat-header-cell *matHeaderCellDef>Fiscal Year</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('fiscalYear')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Types of Materials Column -->
+                      <ng-container matColumnDef="materialType">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Types of Materials
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('materialType')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Proposed Quantity Column -->
+                      <ng-container matColumnDef="proposedQty">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Quantity Proposed
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="text"
+                              [formControl]="row.get('proposedQty')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Recommended Quantity Column -->
+                      <ng-container matColumnDef="recommendedQty">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Quantity Recommended
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="text"
+                              [formControl]="row.get('recommendedQty')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Page Reference Column -->
+                      <ng-container matColumnDef="pageRef">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Proposal Page Reference
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('pageRef')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Actions Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row; let i = index">
+                          <button
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeMaterialRow(i)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr
+                        mat-header-row
+                        *matHeaderRowDef="materialsDisplayedColumns"
+                      ></tr>
+                      <tr
+                        mat-row
+                        *matRowDef="let row; columns: materialsDisplayedColumns"
+                      ></tr>
+                    </table>
+                  </div>
+
+                  <!-- Supporting Basis -->
+                  <div class="supporting-basis mt-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label
+                        >Explanation for Questioned Materials</mat-label
+                      >
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="questionedMaterialsExplanation"
+                        placeholder="Please explain why the types and/or quantities of materials proposed are not appropriate"
+                      >
+                      </textarea>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      appearance="outline"
+                      class="full-width mt-3"
+                    >
+                      <mat-label
+                        >Justification for Recommended Materials</mat-label
+                      >
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="recommendedMaterialsJustification"
+                        placeholder="Please explain why the types and/or quantities of materials being recommended are appropriate"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Travel Section -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>C. TRAVEL</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content" [formGroup]="travelForm">
+                <!-- Purpose for Travel -->
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Purpose for Travel</mat-label>
+                  <textarea
+                    matInput
+                    rows="4"
+                    formControlName="travelPurpose"
+                    placeholder="Briefly describe why the proposed travel is needed"
+                  >
+                  </textarea>
+                  <mat-hint
+                    >Address why the travel is necessary to perform the
+                    effort</mat-hint
+                  >
+                </mat-form-field>
+
+                <!-- Technical Acceptability -->
+                <div class="acceptability-section">
+                  <label class="mat-label"
+                    >All Travel Elements Technically Acceptable?</label
+                  >
+                  <mat-hint class="d-block text-sm text-gray-600 mb-2">
+                    (Number of trips, days, travelers)
+                  </mat-hint>
+                  <mat-radio-group
+                    formControlName="travelTechnicallyAcceptable"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <!-- Conditional Content based on Yes/No -->
+                <div
+                  *ngIf="
+                    travelForm.get('travelTechnicallyAcceptable')?.value ===
+                    'yes'
+                  "
+                  class="conditional-content"
+                >
+                  <!-- Number of Trips Justification -->
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Number of Trips Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="tripsJustification"
+                      placeholder="Explain why the number of trips proposed is needed for this effort"
+                    >
+                    </textarea>
+                    <mat-hint
+                      >Address how the effort would be impacted if fewer trips
+                      were proposed</mat-hint
+                    >
+                  </mat-form-field>
+
+                  <!-- Duration Justification -->
+                  <mat-form-field appearance="outline" class="full-width mt-3">
+                    <mat-label>Trip Duration Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="durationJustification"
+                      placeholder="Explain why the number of days proposed is appropriate"
+                    >
+                    </textarea>
+                    <mat-hint
+                      >Address how the effort would be impacted if trips of
+                      shorter duration were proposed</mat-hint
+                    >
+                  </mat-form-field>
+
+                  <!-- Travelers Justification -->
+                  <mat-form-field appearance="outline" class="full-width mt-3">
+                    <mat-label>Number of Travelers Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="travelersJustification"
+                      placeholder="Explain why the number of travelers proposed is appropriate"
+                    >
+                    </textarea>
+                    <mat-hint
+                      >Address why the expertise of the proposed travelers is
+                      necessary and how the effort would be impacted if fewer
+                      travelers were proposed</mat-hint
+                    >
+                  </mat-form-field>
+                </div>
+
+                <!-- Travel Table (shown when "No" is selected) -->
+                <div
+                  *ngIf="
+                    travelForm.get('travelTechnicallyAcceptable')?.value ===
+                    'no'
+                  "
+                  class="questioned-travel-section"
+                >
+                  <div class="table-actions">
+                    <button mat-button color="primary" (click)="addTravelRow()">
+                      <mat-icon>add</mat-icon> Add Travel Detail
+                    </button>
+                  </div>
+
+                  <div class="reqResTableContainer">
+                    <table
+                      mat-table
+                      [dataSource]="travelArray.controls"
+                      class="mat-elevation-z2"
+                    >
+                      <!-- Fiscal Year Column -->
+                      <ng-container matColumnDef="fiscalYear">
+                        <th mat-header-cell *matHeaderCellDef>Fiscal Year</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('fiscalYear')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Destination Column -->
+                      <ng-container matColumnDef="destination">
+                        <th mat-header-cell *matHeaderCellDef>Destination</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('destination')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Number of Trips Column -->
+                      <ng-container matColumnDef="trips">
+                        <th mat-header-cell *matHeaderCellDef>
+                          <div class="column-header">
+                            Number of Trips
+                            <div class="sub-columns">
+                              <div>Proposed</div>
+                              <div>Recomm.</div>
+                            </div>
+                          </div>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <div class="dual-input">
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('proposedTrips')"
+                              />
+                            </mat-form-field>
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('recommendedTrips')"
+                              />
+                            </mat-form-field>
+                          </div>
+                        </td>
+                      </ng-container>
+
+                      <!-- Number of Days Column -->
+                      <ng-container matColumnDef="days">
+                        <th mat-header-cell *matHeaderCellDef>
+                          <div class="column-header">
+                            Number of Days
+                            <div class="sub-columns">
+                              <div>Proposed</div>
+                              <div>Recomm.</div>
+                            </div>
+                          </div>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <div class="dual-input">
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('proposedDays')"
+                              />
+                            </mat-form-field>
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('recommendedDays')"
+                              />
+                            </mat-form-field>
+                          </div>
+                        </td>
+                      </ng-container>
+
+                      <!-- Number of Travelers Column -->
+                      <ng-container matColumnDef="travelers">
+                        <th mat-header-cell *matHeaderCellDef>
+                          <div class="column-header">
+                            Number of Travelers
+                            <div class="sub-columns">
+                              <div>Proposed</div>
+                              <div>Recomm.</div>
+                            </div>
+                          </div>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <div class="dual-input">
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('proposedTravelers')"
+                              />
+                            </mat-form-field>
+                            <mat-form-field
+                              appearance="outline"
+                              class="table-field"
+                              subscriptSizing="dynamic"
+                            >
+                              <input
+                                matInput
+                                type="number"
+                                [formControl]="row.get('recommendedTravelers')"
+                              />
+                            </mat-form-field>
+                          </div>
+                        </td>
+                      </ng-container>
+
+                      <!-- Page Reference Column -->
+                      <ng-container matColumnDef="pageRef">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Page Reference
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('pageRef')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Actions Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row; let i = index">
+                          <button
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeTravelRow(i)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr
+                        mat-header-row
+                        *matHeaderRowDef="travelDisplayedColumns"
+                      ></tr>
+                      <tr
+                        mat-row
+                        *matRowDef="let row; columns: travelDisplayedColumns"
+                      ></tr>
+                    </table>
+                  </div>
+
+                  <!-- Supporting Basis -->
+                  <div class="supporting-basis mt-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Explanation for Questioned Travel</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="questionedTravelExplanation"
+                        placeholder="Please explain why the number of trips, days, and/or travelers proposed are not appropriate"
+                      >
+                      </textarea>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      appearance="outline"
+                      class="full-width mt-3"
+                    >
+                      <mat-label
+                        >Justification for Recommended Travel</mat-label
+                      >
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="recommendedTravelJustification"
+                        placeholder="Please explain why the number of trips, days, and/or travelers being recommended are appropriate"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- ODC Section -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>D. OTHER DIRECT COSTS (ODC)</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content" [formGroup]="odcForm">
+                <!-- ODC List Display -->
+                <div class="odc-list-section mb-4">
+                  <h4 class="section-subtitle mb-2">
+                    Listed ODCs for Evaluation:
+                  </h4>
+                  <!-- <div class="odc-chips">
+                    <mat-chip-listbox>
+                      <mat-chip *ngFor="let odc of predefinedODCs">
+                        {{ odc }}
+                      </mat-chip>
+                    </mat-chip-listbox>
+                  </div> -->
+                </div>
+
+                <!-- Technical Acceptability -->
+                <div class="acceptability-section">
+                  <label class="mat-label"
+                    >All ODCs Technically Acceptable?</label
+                  >
+                  <mat-radio-group
+                    formControlName="odcTechnicallyAcceptable"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <!-- Conditional Content based on Yes/No -->
+                <div
+                  *ngIf="
+                    odcForm.get('odcTechnicallyAcceptable')?.value === 'yes'
+                  "
+                  class="conditional-content"
+                >
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>ODC Appropriateness Justification</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="odcJustification"
+                      placeholder="Please explain why the ODC proposed is appropriate for this effort"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+
+                <!-- ODC Table -->
+                <div class="questioned-odc-section">
+                  <div class="table-actions">
+                    <button mat-button color="primary" (click)="addODCRow()">
+                      <mat-icon>add</mat-icon> Add ODC
+                    </button>
+                  </div>
+
+                  <div class="reqResTableContainer">
+                    <table
+                      mat-table
+                      [dataSource]="odcArray.controls"
+                      class="mat-elevation-z2"
+                    >
+                      <!-- Fiscal Year Column -->
+                      <ng-container matColumnDef="fiscalYear">
+                        <th mat-header-cell *matHeaderCellDef>Fiscal Year</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('fiscalYear')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Proposed ODC Column -->
+                      <ng-container matColumnDef="proposedODC">
+                        <th mat-header-cell *matHeaderCellDef>Proposed ODC</th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('proposedODC')"
+                              placeholder="Specify Proposed ODC"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Proposed Quantity Column -->
+                      <ng-container matColumnDef="proposedQty">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Proposed Quantity
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="text"
+                              [formControl]="row.get('proposedQty')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Recommended ODC Column -->
+                      <ng-container matColumnDef="recommendedODC">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Recommended ODC
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('recommendedODC')"
+                              placeholder="Specify Recommended ODC"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Recommended Quantity Column -->
+                      <ng-container matColumnDef="recommendedQty">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Recommended Quantity
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              type="text"
+                              [formControl]="row.get('recommendedQty')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Page Reference Column -->
+                      <ng-container matColumnDef="pageRef">
+                        <th mat-header-cell *matHeaderCellDef>
+                          Page Reference
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                          <mat-form-field
+                            appearance="outline"
+                            class="table-field"
+                            subscriptSizing="dynamic"
+                          >
+                            <input
+                              matInput
+                              [formControl]="row.get('pageRef')"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </ng-container>
+
+                      <!-- Actions Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row; let i = index">
+                          <button
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeODCRow(i)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr
+                        mat-header-row
+                        *matHeaderRowDef="odcDdisplayedColumns"
+                      ></tr>
+                      <tr
+                        mat-row
+                        *matRowDef="let row; columns: odcDdisplayedColumns"
+                      ></tr>
+                    </table>
+                  </div>
+
+                  <!-- Supporting Basis -->
+                  <div class="supporting-basis mt-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Explanation for Questioned ODCs</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="questionedODCExplanation"
+                        placeholder="Please explain why the ODCs proposed are not appropriate to perform the effort"
+                      >
+                      </textarea>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      appearance="outline"
+                      class="full-width mt-3"
+                    >
+                      <mat-label>Justification for Recommended ODCs</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="recommendedODCJustification"
+                        placeholder="Please explain why the ODCs being recommended are appropriate to perform the effort"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Terms and Conditions Section -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong
+                    >E. CONTRACTOR TERMS AND CONDITIONS OR GROUND
+                    RULES/ASSUMPTIONS</strong
+                  >
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content" [formGroup]="termsForm">
+                <!-- Exception to Government Terms -->
+                <div class="question-block">
+                  <label class="mat-label"
+                    >1. Did the contractor take exception to any Government
+                    terms and conditions?</label
+                  >
+                  <mat-radio-group
+                    formControlName="hasExceptions"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+
+                  <mat-form-field
+                    *ngIf="termsForm.get('hasExceptions')?.value === 'yes'"
+                    appearance="outline"
+                    class="full-width mt-3"
+                  >
+                    <mat-label>List Exceptions</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="exceptionsList"
+                      placeholder="Please list all exceptions taken"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+
+                <!-- Government Compliance -->
+                <div class="question-block mt-4">
+                  <label class="mat-label"
+                    >2. Can the Government comply with all the terms and
+                    conditions and/or ground rules/assumptions proposed?</label
+                  >
+                  <mat-radio-group
+                    formControlName="canComply"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+
+                  <mat-form-field
+                    *ngIf="termsForm.get('canComply')?.value === 'no'"
+                    appearance="outline"
+                    class="full-width mt-3"
+                  >
+                    <mat-label>Non-compliant Terms</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="nonCompliantTerms"
+                      placeholder="List specific terms and conditions and/or ground rules/assumptions that cannot be satisfied"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+
+                <!-- Government's Best Interest -->
+                <div class="question-block mt-4">
+                  <label class="mat-label"
+                    >3. Is it in the Government's best interest to accept all
+                    the terms and conditions and/or ground rules/assumptions
+                    proposed?</label
+                  >
+                  <mat-radio-group
+                    formControlName="inBestInterest"
+                    class="radio-group"
+                  >
+                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                    <mat-radio-button value="no">No</mat-radio-button>
+                  </mat-radio-group>
+
+                  <div
+                    *ngIf="termsForm.get('inBestInterest')?.value === 'no'"
+                    class="nested-fields mt-3"
+                  >
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Risk Assessment</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="riskAssessment"
+                        placeholder="What risks would the Government face by accepting all the terms and conditions and/or ground rules/assumptions as proposed?"
+                      >
+                      </textarea>
+                    </mat-form-field>
+
+                    <mat-form-field
+                      appearance="outline"
+                      class="full-width mt-3"
+                    >
+                      <mat-label>Terms to Negotiate</mat-label>
+                      <textarea
+                        matInput
+                        rows="4"
+                        formControlName="termsToNegotiate"
+                        placeholder="Which specific terms and conditions and/or ground rules/assumptions should the Government negotiate?"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <!-- Alternate Terms -->
+                <div class="question-block mt-4">
+                  <label class="mat-label"
+                    >4. What alternate terms and conditions can the Government
+                    offer the contractor?</label
+                  >
+                  <mat-form-field appearance="outline" class="full-width mt-2">
+                    <mat-label>Alternate Terms</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="alternateTerms"
+                      placeholder="List potential terms/conditions that the Government can satisfy that could be offered during negotiations"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Other Proposal Element Section -->
+            <mat-expansion-panel class="mt-4">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>F. OTHER PROPOSAL ELEMENT</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="panel-content" [formGroup]="otherElementsForm">
+                <!-- Custom Proposal Areas -->
+                <div class="other-elements-section">
+                  <button
+                    mat-button
+                    color="primary"
+                    type="button"
+                    (click)="addProposalArea()"
+                    class="mb-4"
+                  >
+                    <mat-icon>add</mat-icon> Add Proposal Area
+                  </button>
+
+                  <div
+                    formArrayName="proposalAreas"
+                    class="proposal-areas-container"
+                  >
+                    <div
+                      *ngFor="
+                        let area of proposalAreasArray.controls;
+                        let i = index
+                      "
+                      [formGroupName]="i"
+                      class="proposal-area"
+                    >
+                      <div class="proposal-area-header">
+                        <span class="proposal-area-title"
+                          >Proposal Area {{ i + 1 }}</span
+                        >
+                        <button
+                          mat-icon-button
+                          color="warn"
+                          type="button"
+                          (click)="removeProposalArea(i)"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Area to be Evaluated</mat-label>
+                        <input
+                          matInput
+                          formControlName="areaTitle"
+                          placeholder="Enter the proposal area title"
+                        />
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Technical Questions</mat-label>
+                        <textarea
+                          matInput
+                          rows="4"
+                          formControlName="technicalQuestions"
+                          placeholder="List specific technical questions you want answered"
+                        >
+                        </textarea>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Evaluation Findings</mat-label>
+                        <textarea
+                          matInput
+                          rows="4"
+                          formControlName="findings"
+                          placeholder="Document your evaluation findings"
+                        >
+                        </textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="supporting-info-card">
+          <mat-card-header>
+            <mat-card-title>3. SUPPORTING TECHNICAL INFORMATION</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content
+            class="card-content"
+            [formGroup]="supportingInfoForm"
+          >
+            <!-- References Section -->
+            <div class="references-section">
+              <h3 class="section-title">References</h3>
+              <p class="section-description">
+                List any documents referenced during the evaluation (e.g.,
+                initial contractor proposal, contractor proposal revisions,
+                Independent Government Cost Estimate (IGCE), etc.)
+              </p>
+
+              <div class="references-container">
+                <button
+                  mat-button
+                  color="primary"
+                  type="button"
+                  (click)="addReference()"
+                  class="mb-3"
+                >
+                  <mat-icon>add</mat-icon> Add Reference
+                </button>
+
+                <div formArrayName="references" class="reference-list">
+                  <div
+                    *ngFor="let ref of referencesArray.controls; let i = index"
+                    [formGroupName]="i"
+                    class="reference-item"
+                  >
+                    <div class="reference-header">
+                      <span class="reference-number"
+                        >Reference {{ i + 1 }}</span
+                      >
+                      <button
+                        mat-icon-button
+                        color="warn"
+                        type="button"
+                        (click)="removeReference(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+
+                    <div class="reference-fields">
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Document Title</mat-label>
+                        <input
+                          matInput
+                          formControlName="title"
+                          placeholder="Enter document title"
+                        />
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Date</mat-label>
+                        <input
+                          matInput
+                          [matDatepicker]="picker"
+                          formControlName="date"
+                          placeholder="Select date"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea
+                          matInput
+                          rows="2"
+                          formControlName="description"
+                          placeholder="Enter document description"
+                        >
+                        </textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Attachments Section -->
+            <div class="attachments-section mt-4">
+              <h3 class="section-title">Attachments</h3>
+              <p class="section-description">
+                Check all applicable attachments and provide additional
+                documentation as needed
+              </p>
+
+              <div class="standard-attachments">
+                <mat-selection-list formControlName="standardAttachments">
+                  <mat-list-option value="dd254">
+                    DD Form 254, Contract Security Classification Specification
+                  </mat-list-option>
+                  <mat-list-option value="gfe">
+                    List of Government Furnished Equipment
+                  </mat-list-option>
+                  <mat-list-option value="cor">
+                    COR Nomination(s)/Technical Point of Contact (TPOC)
+                    Information
+                  </mat-list-option>
+                  <mat-list-option value="cdrl">
+                    Contract Data Requirements List (CDRL) Addresses
+                  </mat-list-option>
+                  <mat-list-option value="funding">
+                    Funding Schedule (if incrementally funded)
+                  </mat-list-option>
+                </mat-selection-list>
+              </div>
+
+              <!-- Other Attachments -->
+              <div class="other-attachments mt-4">
+                <div class="other-attachments-header">
+                  <h4 class="subsection-title">Other Attachments</h4>
+                  <button
+                    mat-button
+                    color="primary"
+                    type="button"
+                    (click)="addOtherAttachment()"
+                  >
+                    <mat-icon>add</mat-icon> Add Attachment
+                  </button>
+                </div>
+
+                <div
+                  formArrayName="otherAttachments"
+                  class="other-attachments-list"
+                >
+                  <div
+                    *ngFor="
+                      let attachment of otherAttachmentsArray.controls;
+                      let i = index
+                    "
+                    [formGroupName]="i"
+                    class="attachment-item"
+                  >
+                    <div class="attachment-header">
+                      <span class="attachment-number"
+                        >Additional Attachment {{ i + 1 }}</span
+                      >
+                      <button
+                        mat-icon-button
+                        color="warn"
+                        type="button"
+                        (click)="removeOtherAttachment(i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+
+                    <div class="attachment-fields">
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Attachment Title</mat-label>
+                        <input
+                          matInput
+                          formControlName="title"
+                          placeholder="Enter attachment title"
+                        />
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea
+                          matInput
+                          rows="2"
+                          formControlName="description"
+                          placeholder="Enter attachment description"
+                        >
+                        </textarea>
+                      </mat-form-field>
+
+                      <!-- File Upload Simulation -->
+                      <!-- <div class="file-upload-field">
+                              <button mat-stroked-button type="button" class="upload-button">
+                                  <mat-icon>attach_file</mat-icon>
+                                  Upload File
+                              </button>
+                              <span class="file-name" *ngIf="attachment.get('fileName')?.value">
+                                  {{attachment.get('fileName')?.value}}
+                              </span>
+                          </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="recommendation-card">
+          <mat-card-header>
+            <mat-card-title>4. RECOMMENDATION</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content
+            class="card-content"
+            [formGroup]="recommendationForm"
+          >
+            <!-- Areas to Negotiate -->
+            <div class="recommendation-section">
+              <h3 class="section-title">a. Summary of Areas to Negotiate</h3>
+              <p class="section-description">
+                Provide a summary list of the specific proposal areas that are
+                recommended for negotiation
+              </p>
+
+              <div class="areas-container">
+                <button
+                  mat-button
+                  color="primary"
+                  type="button"
+                  (click)="addArea()"
+                  class="mb-3"
+                >
+                  <mat-icon>add</mat-icon> Add Area
+                </button>
+
+                <div class="negotiation-areas">
+                  <mat-chip-listbox
+                    formControlName="negotiationAreas"
+                    class="area-chips"
+                    [multiple]="true"
+                  >
+                    <mat-chip-option *ngFor="let area of availableAreas">
+                      {{ area }}
+                    </mat-chip-option>
+                  </mat-chip-listbox>
+
+                  <mat-form-field appearance="outline" class="full-width mt-3">
+                    <mat-label>Additional Areas</mat-label>
+                    <textarea
+                      matInput
+                      rows="4"
+                      formControlName="additionalAreas"
+                      placeholder="List any additional areas for negotiation"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="recommendation-section mt-4">
+              <h3 class="section-title">b. Additional Comments</h3>
+              <p class="section-description">
+                Provide any additional comments regarding the technical
+                evaluation not captured elsewhere
+              </p>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <textarea
+                  matInput
+                  rows="4"
+                  formControlName="additionalComments"
+                  placeholder="Enter any additional comments"
+                >
+                </textarea>
+              </mat-form-field>
+            </div>
+
+            <!-- Prepared By -->
+            <div class="recommendation-section mt-4">
+              <h3 class="section-title">c. Prepared By</h3>
+
+              <div class="preparer-info">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="preparerName" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <input matInput formControlName="preparerTitle" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Extension</mat-label>
+                  <input matInput formControlName="preparerExtension" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="recommendation-section mt-4">
+              <h3 class="section-title">d. Signature</h3>
+
+              <div class="signature-area">
+                <div class="signature-placeholder">
+                  <mat-icon class="signature-icon">draw</mat-icon>
+                  <span class="signature-text">Click to Sign</span>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Digital Signature ID</mat-label>
+                  <input matInput formControlName="signatureId" readonly />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Date -->
+            <div class="recommendation-section mt-4">
+              <h3 class="section-title">e. Date</h3>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Completion Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="completionDate"
+                  placeholder="mm-dd-yyyy"
+                />
+                <mat-hint>Format: mm-dd-yyyy</mat-hint>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="submitForm()">
+            <mat-icon>save</mat-icon>
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

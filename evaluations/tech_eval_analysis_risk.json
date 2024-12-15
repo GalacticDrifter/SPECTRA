@@ -1,0 +1,50 @@
+{
+  "name": "Flags",
+  "additional_info": "Common risk areas to check for",
+  "risks": [
+    {
+      "id": 0,
+      "risk_check": "Assure proposed tasks relate to the SOW and are within scope."
+    },
+    {
+      "id": 1,
+      "risk_check": "Consider scope agreement (aka 20% rule): If the tech evaluator and the contractor are 20% or more off in the estimate, there should be an RFI to ensure the understanding of requirements/scope is consistent amongst all parties"
+    },
+    {
+      "id": 2,
+      "risk_check": "Watch for duplication of costs in differing areas of the proposal (Ex. Labor for same effort in two different labor categories, supervisory/PM labor, materials in CBOM & subcontractor proposals or as GFP; overlapping LOE/PMO costs [common when you negotiate a ECP or have overlapping upgrades/devices)])."
+    },
+    {
+      "id": 3,
+      "risk_check": "Managerial/supervisory labor should be significantly less than actual labor (usually no more than 10%)"
+    },
+    {
+      "id": 4,
+      "risk_check": "Align effort w/cost drivers: Tech Eval time/effort should be commensurate with greatest cost drivers. A proposal with 90% labor & 10% travel should not have a tech eval that discussed 10% labor & 90% travel."
+    },
+    {
+      "id": 5,
+      "risk_check": "Look for unbalanced pricing: this is when the overall price is fair, but weighted heavily in one or more CLINs. This can be front-loading PoP (equivalent to advanced payments without consideration); or with options wherein the contractor thinks the option may not be exercised (and therefore spreads costs across non-option CLINs). It is also seen in first article tests or product test items, startup work and mobilization, and sundown work are separately priced."
+    },
+    {
+      "id": 6,
+      "risk_check": "Is the labor mix appropriate? (Ex.: Should an intern do the job for 20 hours or an expert for 1?) Is the labor spread across the PoP appropriately? (If total hours are evenly distributed across the PoP this is a FLAG. Ex.: Design engineering hours occur at the beginning of a production period; installation labor occurs at the end.)"
+    },
+    {
+      "id": 7,
+      "risk_check": "Which estimating methods did the contractor use? It is rarely appropriate to have all judgment or bottoms up engineering! Are actuals available (if we’ve bought or they’ve sold it before they should be)? Averages across efforts are often not appropriate (Ex. Prices may be lower if the trend is decreasing pricing due to increased competition; higher if the government complexity exceeds commercial complexities.)"
+    },
+    {
+      "id": 8,
+      "risk_check": "TRAVEL: Are they following the JTR? Are they applying a CER relevant to another platform or even the same program when no travel is expected for the procurement?"
+    },
+    {
+      "id": 9,
+      "risk_check": "CERs: While CER rates are pre-negotiated by DCMA, you can question applicability. Old CERs may no longer be relevant/comparable. New CERs must be in the DCMA FPRA. If a CER is adjusted it is inapplicable and negotiable. Consult DCMA or offer a different estimating methodology."
+    },
+    {
+      "id": 10,
+      "risk_check": "MATERIAL: Are scrap/repair/rework/obsolescence rates appropriate? Are decrement & escalation rates appropriate? Has the analysis covered the majority of material costs (provide %)? Do you have subcontractor proposals for costs exceeding the Cost & Pricing Data Threshold?"
+    }
+  ]
+}

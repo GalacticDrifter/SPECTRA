@@ -1,0 +1,193 @@
+<div class="dashboard-container" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="16px">
+  <!-- Project Management Section -->
+  <mat-card fxFlex="1 1 auto">
+    <mat-card-header>
+      <mat-card-title>Project Management</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="project-controls mt-1" fxLayout="row" fxLayoutGap="8px" fxFlexWrap="wrap">
+        <mat-form-field appearance="outline" class="project-select" fxFlex="1 1 auto" subscriptSizing="dynamic">
+          <mat-label>Select Project</mat-label>
+          <mat-select [value]="selectedProject$ | async" (selectionChange)="onProjectChange($event.value)">
+            <mat-option [value]="null">
+              <em>Select a project</em>
+            </mat-option>
+            <mat-option *ngFor="let project of projects$ | async" [value]="project">
+              {{ project.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="openNewProjectDialog()">
+          <mat-icon>add</mat-icon>
+          New Project
+        </button>
+      </div>
+
+      <div class="project-info" *ngIf="selectedProject$ | async as selectedProject">
+        <mat-chip-listbox>
+          <mat-option color="primary" selected>
+            Current Project: {{ selectedProject.name }}
+          </mat-option>
+          <mat-option>
+            Created: {{ selectedProject.created_date | date }}
+          </mat-option>
+        </mat-chip-listbox>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Main Dashboard Content -->
+  <ng-container *ngIf="selectedProject$ | async as selectedProject">
+    <!-- Document Upload Section -->
+    <mat-card fxFlex="1 1 auto">
+      <mat-card-header>
+        <mat-card-title>Document Upload</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="document-upload-card">
+          <div class="upload-row" fxLayout="row" fxLayoutGap="16px" fxFlexWrap="wrap">
+            <button mat-raised-button [color]="
+                (projectData$ | async)?.requestName ? 'secondary' : 'primary'
+              " [disabled]="isProcessing$ | async" (click)="requestFileInput.click()" style="width: 160px">
+              Upload Request
+            </button>
+            <mat-form-field appearance="outline" fxFlex="1 1 auto" subscriptSizing="dynamic">
+              <mat-label>Sole Source Request</mat-label>
+              <input matInput readonly disabled [value]="(projectData$ | async)?.requestName || ''" />
+            </mat-form-field>
+
+            <input #requestFileInput type="file" hidden (change)="openUpload($event, 'request')" />
+          </div>
+
+          <div class="upload-row" fxLayout="row" fxLayoutGap="16px" fxFlexWrap="wrap">
+            <button mat-raised-button [color]="
+                (projectData$ | async)?.responseName ? 'default' : 'primary'
+              " [disabled]="isProcessing$ | async" (click)="responseFileInput.click()">
+              Upload Response
+            </button>
+            <mat-form-field appearance="outline" fxFlex="1 1 auto" subscriptSizing="dynamic">
+              <mat-label>Sole Source Response</mat-label>
+              <input matInput readonly disabled [value]="(projectData$ | async)?.responseName || ''" />
+            </mat-form-field>
+
+            <input #responseFileInput type="file" hidden (change)="openUpload($event, 'response')" />
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Evaluation Controls Section -->
+    <mat-card fxFlex="1 1 auto">
+      <mat-card-header>
+        <mat-card-title>Evaluation Controls</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="evaluation-controls mt-1" fxLayout="row" fxLayoutGap="8px" fxFlexWrap="wrap">
+          <button mat-raised-button color="primary" [disabled]="
+              !(canDeriveRequirements$ | async) || (isProcessing$ | async) || (derivedRequirementsEvaluation$ | async)?.length
+            " (click)="deriveAndEvaluateRequirements()">
+            <mat-icon [class]="(derivedRequirementsEvaluation$ | async)?.length ? 'success' : ''">
+              {{
+              (derivedRequirementsEvaluation$ | async)?.length
+              ? "check_circle"
+              : "assignment"
+              }}
+            </mat-icon>
+            Evaluation Criteria
+          </button>
+
+          <button mat-raised-button color="accent"
+            [disabled]="!(hasRequirements$ | async) || (isProcessing$ | async) || (workProductsEvaluation$ | async)?.length"
+            (click)="evaluateWorkProducts()">
+            <mat-icon [class]="(workProductsEvaluation$ | async)?.length ? 'success' : ''">
+              {{ (workProductsEvaluation$ | async)?.length ? "check_circle" : "work" }}
+            </mat-icon>
+            Work Products Form
+          </button>
+
+          <button mat-raised-button color="accent"
+            [disabled]="!(hasRequirements$ | async) || (isProcessing$ | async) || (requestResponseEvaluation$ | async)"
+            (click)="evaluateRequirementsResponse()">
+            <mat-icon [class]="(requestResponseEvaluation$ | async) ? 'success' : ''">
+              {{
+              (requestResponseEvaluation$ | async) ? "check_circle" : "assessment"
+              }}
+            </mat-icon>
+            Request Response Form
+          </button>
+
+          <button mat-raised-button color="accent" [disabled]="
+              !(hasRequirements$ | async) ||
+              (isProcessing$ | async) ||
+              !(workProductsEvaluation$ | async)?.length ||
+              !(requestResponseEvaluation$ | async) ||
+              (summaries$ | async)
+            " (click)="evaluationSummary()">
+            <mat-icon [class]="(summaries$ | async) ? 'success' : ''">
+              {{ (summaries$ | async) ? "check_circle" : "manage_search" }}
+            </mat-icon>
+            Evaluation Summary
+          </button>
+        </div>
+
+        <!-- Replace your existing processing indicator with this -->
+        <div class="processing-indicator" *ngIf="isProcessing$ | async">
+          <app-progress-tracker
+            *ngIf="selectedProject$ | async as project"
+            [resetProgress]="resetProgressFlag"
+            [projectId]="project.id">
+          </app-progress-tracker>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <ng-container *ngIf="derivedRequirementsEvaluation$ | async as requirements">
+      <app-derived-requirements-evaluation [qaItems]="requirements"></app-derived-requirements-evaluation>
+    </ng-container>
+
+    <ng-container *ngIf="summaries$ | async as summaries">
+      <mat-expansion-panel class="summary-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Evaluation Summaries
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-summary-evaluations [summaries]="summaries"></app-summary-evaluations>
+      </mat-expansion-panel>
+    </ng-container>
+
+    <ng-container *ngIf="(derivedRequirementsEvaluation$ | async) || (workProductsEvaluation$ | async)">
+      <app-evaluation-stats [derivedRequirements]="derivedRequirementsEvaluation$ | async"
+        [workProducts]="workProductsEvaluation$ | async"></app-evaluation-stats>
+    </ng-container>
+
+    <!-- Document Viewer Section -->
+    <mat-card fxFlex="1 1 auto">
+      <mat-card-header>
+        <mat-card-title>Document Viewer</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Sole Source Request">
+            <ng-container *ngIf="(projectData$ | async)?.requestUrl as url">
+              <iframe [src]="url | safe" width="100%" height="500px" frameborder="0"></iframe>
+            </ng-container>
+          </mat-tab>
+          <mat-tab label="Sole Source Response">
+            <ng-container *ngIf="(projectData$ | async)?.responseUrl as url">
+              <iframe [src]="url | safe" width="100%" height="500px" frameborder="0"></iframe>
+            </ng-container>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <!-- No Project Selected Message -->
+  <mat-card *ngIf="!(selectedProject$ | async)" class="text-center">
+    <mat-card-content>
+      <p>Please select or create a project to view the dashboard.</p>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,41 @@
+<!-- document-upload-warning-dialog.component.html -->
+<div class="warning-dialog">
+    <h2 mat-dialog-title>
+        <mat-icon class="warning-icon">warning</mat-icon>
+        Warning: Data Loss Risk
+    </h2>
+
+    <mat-dialog-content>
+        <div class="warning-content">
+            <p class="primary-message">
+                Uploading new documents will require regenerating all form data and will result in the loss of Work Products form and Request & Response form changes.
+            </p>
+
+            <div class="details-section">
+                <h3>This action will:</h3>
+                <ul>
+                    <li>Clear all existing form data</li>
+                    <li>Remove any custom modifications</li>
+                    <li>Require regeneration of evaluation data</li>
+                    <li>Reset all progress indicators</li>
+                </ul>
+            </div>
+
+            <!-- <div class="recommendation">
+                <p>
+                    <strong>Recommended Action:</strong> Please save any important changes before proceeding with the
+                    upload.
+                </p>
+            </div> -->
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button color="primary" (click)="onCancel()">
+            Cancel Upload
+        </button>
+        <button mat-flat-button color="warn" (click)="onProceed()" class="proceed-button">
+            Proceed Anyway
+        </button>
+    </mat-dialog-actions>
+</div>

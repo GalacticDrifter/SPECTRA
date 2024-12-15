@@ -1,0 +1,283 @@
+<!-- labor-section.component.html -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <strong>A. LABOR</strong>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <form [formGroup]="laborForm" class="labor-section">
+    <!-- Summary Section -->
+    <section class="summary-section">
+      <div class="hours-summary grid-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Proposed Hours</mat-label>
+          <input matInput 
+                 type="number"
+                 formControlName="proposedHours"
+                 (blur)="validateTotals()">
+          <mat-hint>Enter total proposed hours</mat-hint>
+          <mat-error *ngIf="laborForm.get('proposedHours')?.errors?.['required']">
+            Proposed hours are required
+          </mat-error>
+          <mat-error *ngIf="laborForm.get('proposedHours')?.errors?.['min']">
+            Hours must be greater than 0
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Recommended Hours</mat-label>
+          <input matInput 
+                 type="number"
+                 formControlName="recommendedHours"
+                 (blur)="validateTotals()">
+          <mat-hint>Enter total recommended hours</mat-hint>
+          <mat-error *ngIf="laborForm.get('recommendedHours')?.errors?.['required']">
+            Recommended hours are required
+          </mat-error>
+          <mat-error *ngIf="laborForm.get('recommendedHours')?.errors?.['min']">
+            Hours must be greater than 0
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Technical Acceptability -->
+      <div class="acceptability-section">
+        <mat-label class="section-label">All Technically Acceptable?</mat-label>
+        <mat-radio-group formControlName="laborTechnicallyAcceptable" 
+                         class="radio-group"
+                         aria-label="Technical acceptability">
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="laborForm.get('laborTechnicallyAcceptable')?.errors?.['required'] && 
+                         laborForm.get('laborTechnicallyAcceptable')?.touched">
+          Please indicate technical acceptability
+        </mat-error>
+      </div>
+    </section>
+
+    <!-- Acceptance Basis Section (shown when acceptable) -->
+    <section class="acceptance-basis" 
+             *ngIf="laborForm.get('laborTechnicallyAcceptable')?.value === true"
+             formGroupName="acceptanceBasis">
+      <mat-card class="basis-card">
+        <mat-card-content>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Basis for Acceptance</mat-label>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let option of acceptanceBasisOptions"
+                         [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="laborForm.get('acceptanceBasis.type')?.errors?.['required']">
+              Please select a basis for acceptance
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Conditional fields based on basis type -->
+          <ng-container [ngSwitch]="laborForm.get('acceptanceBasis.type')?.value">
+            <!-- Same or Similar Effort -->
+            <mat-form-field *ngSwitchCase="'sameOrSimilar'"
+                           appearance="outline" 
+                           class="full-width">
+              <mat-label>Associated Contract Number</mat-label>
+              <input matInput 
+                     formControlName="contractNumber"
+                     placeholder="Enter contract number">
+              <mat-error *ngIf="laborForm.get('acceptanceBasis.contractNumber')?.errors?.['required']">
+                Contract number is required for same/similar effort basis
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Estimating Method -->
+            <mat-form-field *ngSwitchCase="'estimatingMethod'"
+                           appearance="outline" 
+                           class="full-width">
+              <mat-label>Methodology and Findings</mat-label>
+              <textarea matInput
+                        formControlName="methodology"
+                        rows="4"
+                        placeholder="Describe the estimating method and findings"></textarea>
+              <mat-error *ngIf="laborForm.get('acceptanceBasis.methodology')?.errors?.['required']">
+                Methodology description is required
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Subject Matter Expertise -->
+            <mat-form-field *ngSwitchCase="'expertise'"
+                           appearance="outline" 
+                           class="full-width">
+              <mat-label>Expert Credentials</mat-label>
+              <textarea matInput
+                        formControlName="credentials"
+                        rows="4"
+                        placeholder="Describe relevant credentials and expertise"></textarea>
+              <mat-error *ngIf="laborForm.get('acceptanceBasis.credentials')?.errors?.['required']">
+                Expert credentials are required
+              </mat-error>
+            </mat-form-field>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <!-- Questioned Hours Section (shown when not acceptable) -->
+    <section class="questioned-hours" 
+             *ngIf="laborForm.get('laborTechnicallyAcceptable')?.value === false">
+      <mat-card class="table-card">
+        <mat-card-content>
+          <div class="table-actions">
+            <button mat-raised-button
+                    color="primary"
+                    type="button"
+                    (click)="addLaborHourRow()">
+              <mat-icon>add</mat-icon>
+              Add Labor Hours Row
+            </button>
+          </div>
+
+          <div class="table-container mat-elevation-z2">
+            <table mat-table [dataSource]="dataSource">
+              <!-- Fiscal Year Column -->
+              <ng-container matColumnDef="fiscalYear">
+                <th mat-header-cell *matHeaderCellDef> Fiscal Year </th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                  <mat-form-field appearance="outline" class="table-field">
+                    <input matInput [formControl]="row.get('fiscalYear')"
+                           placeholder="YYYY">
+                    <mat-error *ngIf="row.get('fiscalYear')?.errors?.['required']">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </ng-container>
+
+              <!-- Labor Category Column -->
+              <ng-container matColumnDef="laborCategory">
+                <th mat-header-cell *matHeaderCellDef> Labor Category </th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                  <mat-form-field appearance="outline" class="table-field">
+                    <input matInput [formControl]="row.get('laborCategory')"
+                           placeholder="Enter category">
+                    <mat-error *ngIf="row.get('laborCategory')?.errors?.['required']">
+                      Required
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </ng-container>
+
+              <!-- Proposed Hours Column -->
+              <ng-container matColumnDef="proposedHours">
+                <th mat-header-cell *matHeaderCellDef> Proposed Hours </th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                  <mat-form-field appearance="outline" class="table-field">
+                    <input matInput 
+                           type="number"
+                           [formControl]="row.get('proposedHours')"
+                           (blur)="validateTotals()"
+                           placeholder="0">
+                    <mat-error *ngIf="row.get('proposedHours')?.errors?.['required']">
+                      Required
+                    </mat-error>
+                    <mat-error *ngIf="row.get('proposedHours')?.errors?.['min']">
+                      Must be > 0
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </ng-container>
+
+              <!-- Recommended Hours Column -->
+              <ng-container matColumnDef="recommendedHours">
+                <th mat-header-cell *matHeaderCellDef> Recommended Hours </th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                  <mat-form-field appearance="outline" class="table-field">
+                    <input matInput 
+                           type="number"
+                           [formControl]="row.get('recommendedHours')"
+                           (blur)="validateTotals()"
+                           placeholder="0">
+                    <mat-error *ngIf="row.get('recommendedHours')?.errors?.['required']">
+                      Required
+                    </mat-error>
+                    <mat-error *ngIf="row.get('recommendedHours')?.errors?.['min']">
+                      Must be > 0
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </ng-container>
+
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                  <button mat-icon-button 
+                          color="warn"
+                          type="button"
+                          (click)="removeLaborHourRow(i)"
+                          [attr.aria-label]="'Remove row ' + (i + 1)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <!-- Empty state message -->
+            <div class="empty-table" *ngIf="laborHoursArray.length === 0">
+              <mat-icon>table_rows</mat-icon>
+              <p>No labor hours added. Click the Add button above to begin.</p>
+            </div>
+          </div>
+
+          <!-- Explanations -->
+          <div class="explanations-section">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Explanation for Questioned Hours</mat-label>
+              <textarea matInput
+                        formControlName="questionedHoursExplanation"
+                        rows="4"
+                        placeholder="Explain why the proposed hours are not appropriate"></textarea>
+              <mat-error *ngIf="laborForm.get('questionedHoursExplanation')?.errors?.['required']">
+                Explanation is required when questioning hours
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width mt-3">
+              <mat-label>Justification for Recommended Hours</mat-label>
+              <textarea matInput
+                        formControlName="recommendedHoursJustification"
+                        rows="4"
+                        placeholder="Explain why the recommended hours are appropriate"></textarea>
+              <mat-error *ngIf="laborForm.get('recommendedHoursJustification')?.errors?.['required']">
+                Justification is required for recommended hours
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <!-- Error Summary -->
+    <div *ngIf="showErrors" class="error-summary mat-error">
+      <mat-icon>error_outline</mat-icon>
+      <div class="error-content">
+        <p class="error-title">Please correct the following errors:</p>
+        <ul>
+          <li *ngFor="let error of formErrors">{{ error }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div *ngIf="isLoading" class="loading-overlay">
+      <mat-progress-spinner mode="indeterminate" 
+                           diameter="32"
+                           aria-label="Loading">
+      </mat-progress-spinner>
+    </div>
+  </form>
+</mat-expansion-panel>

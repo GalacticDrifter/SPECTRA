@@ -1,0 +1,257 @@
+// labor-section.component.scss
+
+// Variables
+$spacing-base: 8px;
+$spacing-double: $spacing-base * 2;
+$spacing-triple: $spacing-base * 3;
+$spacing-quad: $spacing-base * 4;
+
+$color-error: #f44336;
+$color-error-bg: rgba($color-error, 0.05);
+$color-background: #f5f5f5;
+$color-text-secondary: rgba(0, 0, 0, 0.6);
+$color-border: rgba(0, 0, 0, 0.12);
+
+$breakpoint-mobile: 768px;
+
+// Main container
+.labor-section {
+  position: relative;
+  padding: $spacing-double;
+
+  // Common utility classes
+  .full-width {
+    width: 100%;
+  }
+
+  .mt-3 {
+    margin-top: $spacing-triple;
+  }
+
+  .mb-3 {
+    margin-bottom: $spacing-triple;
+  }
+
+  // Section layouts
+  .summary-section,
+  .acceptance-basis,
+  .questioned-hours {
+    margin-bottom: $spacing-triple;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Grid layouts
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-double;
+
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Acceptability section
+  .acceptability-section {
+    margin: $spacing-double 0;
+
+    .section-label {
+      display: block;
+      margin-bottom: $spacing-base;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    .radio-group {
+      display: flex;
+      gap: $spacing-double;
+      margin-top: $spacing-base;
+
+      @media (max-width: $breakpoint-mobile) {
+        flex-direction: column;
+        gap: $spacing-base;
+      }
+    }
+  }
+
+  // Basis card styles
+  .basis-card {
+    margin: $spacing-double 0;
+    
+    mat-card-content {
+      padding: $spacing-double;
+    }
+  }
+
+  // Table styles
+  .table-card {
+    margin: $spacing-double 0;
+
+    .table-container {
+      margin: $spacing-double 0;
+      overflow-x: auto;
+      border-radius: 4px;
+      border: 1px solid $color-border;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+          font-weight: 500;
+          color: rgba(0, 0, 0, 0.87);
+          padding: $spacing-double;
+          text-align: left;
+          background-color: $color-background;
+        }
+
+        td {
+          padding: $spacing-base;
+          vertical-align: middle;
+          border-top: 1px solid $color-border;
+        }
+
+        .table-field {
+          margin: -1em 0;
+          width: 100%;
+
+          // Remove bottom spacing from nested mat-form-field
+          ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Table actions
+  .table-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $spacing-double;
+
+    button {
+      min-width: 120px;
+    }
+  }
+
+  // Empty state
+  .empty-table {
+    padding: $spacing-quad;
+    text-align: center;
+    background: $color-background;
+    border-radius: 4px;
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: $spacing-double;
+      opacity: 0.5;
+      color: $color-text-secondary;
+    }
+
+    p {
+      margin: 0;
+      color: $color-text-secondary;
+      font-size: 14px;
+    }
+  }
+
+  // Explanations section
+  .explanations-section {
+    margin-top: $spacing-triple;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-double;
+  }
+
+  // Error handling
+  .error-summary {
+    margin-top: $spacing-double;
+    padding: $spacing-double;
+    border-radius: 4px;
+    background-color: $color-error-bg;
+    display: flex;
+    gap: $spacing-double;
+    align-items: flex-start;
+
+    mat-icon {
+      color: $color-error;
+      flex-shrink: 0;
+    }
+
+    .error-content {
+      flex: 1;
+
+      .error-title {
+        margin: 0 0 $spacing-base 0;
+        font-weight: 500;
+        color: $color-error;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: $spacing-double;
+        
+        li {
+          margin-bottom: $spacing-base;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Loading overlay
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  // Form field overrides
+  ::ng-deep {
+    .mat-mdc-form-field {
+      .mat-mdc-text-field-wrapper {
+        background-color: white;
+      }
+    }
+
+    .mat-mdc-form-field-error {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-base;
+
+    .mat-column-actions {
+      width: 48px;
+    }
+
+    .table-container {
+      margin: $spacing-base 0;
+      
+      table {
+        td, th {
+          padding: $spacing-base;
+        }
+      }
+    }
+  }
+}

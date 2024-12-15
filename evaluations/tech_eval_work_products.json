@@ -1,0 +1,284 @@
+[
+  {
+    "id": 0,
+    "query": "Have you read or are you aware of NAVAIRINST 4200.59",
+    "response_type": "Yes/No",
+    "section": "General Guidance"
+  },
+  {
+    "id": 1,
+    "query": "Does the technical evaluation have 2 signatures?",
+    "response_type": "Yes/No",
+    "section": "General Guidance"
+  },
+  {
+    "id": 2,
+    "query": "What is labor required for?",
+    "response_type": "Text",
+    "section": "Labor Hours"
+  },
+  {
+    "id": 3,
+    "query": "What was the contractor's estimating method and was it appropriate? What other methods might have been used and do any of those result in a more advantageous estimate for the government?",
+    "response_type": "Text",
+    "section": "Labor Hours"
+  },
+  {
+    "id": 4,
+    "query": "Are the labor hours proposed appropriate to perform the effort?",
+    "response_type": "Yes/No",
+    "section": "Labor Hours"
+  },
+  {
+    "id": 5,
+    "query": "Why/why not? (i.e., overstated compared to historical efforts/similar efforts/industry standards; duplicative; unnecessary/a misunderstanding of scope; miscalculations; inappropriate base, rate, or formula, etc.)",
+    "response_type": "Text",
+    "section": "Labor Hours"
+  },
+  {
+    "id": 6,
+    "query": "Are the labor categories proposed an appropriate skill mix to accomplish the effort?",
+    "response_type": "Yes/No",
+    "section": "Labor Categories/Mix"
+  },
+  {
+    "id": 7,
+    "query": "Are the labor categories proposed an appropriate skill mix to accomplish the effort? Why/Why not?",
+    "response_type": "Text",
+    "section": "Labor Categories/Mix"
+  },
+  {
+    "id": 8,
+    "query": "Could a lower labor category accomplish the same effort?",
+    "response_type": "Yes/No",
+    "section": "Labor Categories/Mix"
+  },
+  {
+    "id": 9,
+    "query": "Are the performance period durations and schedules appropriate for the planned technical approach, task sequence, co-dependent tasks and master schedule?",
+    "response_type": "Yes/No",
+    "section": "Labor Spread"
+  },
+  {
+    "id": 10,
+    "query": "Are the performance period durations and schedules appropriate for the planned technical approach, task sequence, co-dependent tasks and master schedule? Why/Why not?",
+    "response_type": "Text",
+    "section": "Labor Spread"
+  },
+  {
+    "id": 11,
+    "query": "What is the proper performance period for the effort? What is the appropriate start and finish date for the effort? Is the spread of hours across the period appropriate (i.e. consistent, front-loaded, bell-curve, back-loaded)?",
+    "response_type": "Text",
+    "section": "Labor Spread"
+  },
+  {
+    "id": 12,
+    "query": "What percentage of material costs are being reviewed (must ensure a reasonable amount are reviewed)? How are reviewed materials selected (i.e. random sampling, cost drivers, etc.)?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 13,
+    "query": "What will the proposed materials be used for?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 14,
+    "query": "Are the materials technically acceptable?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 15,
+    "query": "If yes, why are the types of materials proposed appropriate for this effort?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 16,
+    "query": "If no, why are the types of materials proposed being questioned?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 17,
+    "query": "Are the quantities of materials proposed acceptable/unacceptable?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 18,
+    "query": "If no for type and/or quantity, what is your alternative recommendation?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 19,
+    "query": "Is Scrap and/or Spoilage adequately addressed in the proposal?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 20,
+    "query": "Is attrition appropriately addressed in the proposal?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 21,
+    "query": "Were material costs escalated and, if so, was the escalation rate reasonable?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 22,
+    "query": "Was freight/shipping proposed and was it reasonable/why?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 23,
+    "query": "Was material cost incurrence appropriate in light of where in the master schedule the materials/subcontractor effort would be required?",
+    "response_type": "Yes/No",
+    "section": "Materials"
+  },
+  {
+    "id": 24,
+    "query": "What are the cost drivers associated with material? What percentage of total cost are they?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 25,
+    "query": "Are multiple quotes provided/reviewed for subcontracted efforts exceeding the Cost & Pricing Data threshold? Are full cost elements provided for subcontracted efforts exceeding the Cost & Pricing Data threshold?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 26,
+    "query": "Have CARs & PARs been provided for all subcontractor proposals exceeding the Cost & Pricing Data threshold? **See Note** What is the evaluator's assessment/adjustment of the CARs/PARs?",
+    "response_type": "Text",
+    "section": "Materials"
+  },
+  {
+    "id": 27,
+    "query": "Why is the proposed travel necessary/unnecessary?",
+    "response_type": "Text",
+    "section": "Travel"
+  },
+  {
+    "id": 28,
+    "query": "Why are the number of trips needed/not needed?",
+    "response_type": "Text",
+    "section": "Travel"
+  },
+  {
+    "id": 29,
+    "query": "Why is the number of days proposed appropriate/inappropriate?",
+    "response_type": "Text",
+    "section": "Travel"
+  },
+  {
+    "id": 30,
+    "query": "Why is the number of travelers proposed appropriate/inappropriate?",
+    "response_type": "Text",
+    "section": "Travel"
+  },
+  {
+    "id": 31,
+    "query": "Was the JTR followed in estimating procedures?",
+    "response_type": "Yes/No",
+    "section": "Travel"
+  },
+  {
+    "id": 32,
+    "query": "If travel is a rate, cost estimating relationship or other formula, is the basis for the formula similar/appropriate to the scope of this effort? *Provide back up support for all of the above**",
+    "response_type": "Text",
+    "section": "Travel"
+  },
+  {
+    "id": 33,
+    "query": "What are the proposed ODCs and what are their purposes?",
+    "response_type": "Text",
+    "section": "ODCs"
+  },
+  {
+    "id": 34,
+    "query": "Why are the proposed ODCs appropriate/inappropriate?",
+    "response_type": "Text",
+    "section": "ODCs"
+  },
+  {
+    "id": 35,
+    "query": "What *NEW* independent development/investment is proposed to reduce the government's risk?",
+    "response_type": "Text",
+    "section": "Profit/Fee"
+  },
+  {
+    "id": 36,
+    "query": "What *NEW* management or cost control initiatives are proposed?",
+    "response_type": "Text",
+    "section": "Profit/Fee"
+  },
+  {
+    "id": 37,
+    "query": "What Single Process Initiative improvements have been proposed/enacted to improve cost efficiency?",
+    "response_type": "Text",
+    "section": "Profit/Fee"
+  },
+  {
+    "id": 38,
+    "query": "What portion of the proposed costs have already been incurred?",
+    "response_type": "Text",
+    "section": "Profit/Fee"
+  },
+  {
+    "id": 39,
+    "query": "Are the Contractor's proposed processes technically acceptable? Why/why not?",
+    "response_type": "Text",
+    "section": "Processes"
+  },
+  {
+    "id": 40,
+    "query": "Are delivery terms/PoP satisfactory/unsatisfactory? Why/Why not?",
+    "response_type": "Text",
+    "section": "Delivery/PoP"
+  },
+  {
+    "id": 41,
+    "query": "Are the shipping costs reasonable?",
+    "response_type": "Yes/No",
+    "section": "Delivery/PoP"
+  },
+  {
+    "id": 42,
+    "query": "Are the data assertions accurate/inaccurate? Reasonable/unreasonable?",
+    "response_type": "Text",
+    "section": "Data Assertions"
+  },
+  {
+    "id": 43,
+    "query": "Did the Contractor take exception to any Government terms/conditions, or provide assumptions?",
+    "response_type": "Text",
+    "section": "Contractor Terms and Conditions and/or Assumptions"
+  },
+  {
+    "id": 44,
+    "query": "Can the Government comply with all terms/conditions/assumptions proposed? Why/why not?",
+    "response_type": "Text",
+    "section": "Contractor Terms and Conditions and/or Assumptions"
+  },
+  {
+    "id": 45,
+    "query": "Is it in the best interest of the Government to comply with all terms/conditions/assumptions? How so?",
+    "response_type": "Text",
+    "section": "Contractor Terms and Conditions and/or Assumptions"
+  },
+  {
+    "id": 46,
+    "query": "What is the technical risk associated with proposed Ground Rules & Assumptions and/or the recommended position & why (accept/reject/negotiate)?",
+    "response_type": "Text",
+    "section": "Contractor Terms and Conditions and/or Assumptions"
+  }
+]

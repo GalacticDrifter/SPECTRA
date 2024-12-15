@@ -1,0 +1,48 @@
+<div class="summaries-container">
+  <!-- Combined Summary -->
+  <mat-card class="summary-card">
+    <mat-card-header>
+      <mat-card-title>Overall Summary</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="markdown-content" [innerHTML]="formatMarkdown(summaries.combined_summary)">
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Individual Summaries Section -->
+  <div class="individual-summaries">
+    <!-- Derived Requirements Summary -->
+    <mat-card class="summary-card">
+      <mat-card-header>
+        <mat-card-title>Evaluation Criteria Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="markdown-content" [innerHTML]="formatMarkdown(summaries.summary_derived_requirements_evaluation)">
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Work Products Summary -->
+    <mat-card class="summary-card">
+      <mat-card-header>
+        <mat-card-title>Work Products Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="markdown-content" [innerHTML]="formatMarkdown(summaries.summary_work_products_evaluation)">
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Request Response Summary -->
+    <mat-card class="summary-card">
+      <mat-card-header>
+        <mat-card-title>Request Response Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="markdown-content" [innerHTML]="formatMarkdown(summaries.summary_req_res_evaluation)">
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

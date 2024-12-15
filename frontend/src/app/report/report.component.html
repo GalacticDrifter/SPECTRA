@@ -1,0 +1,14 @@
+<ng-container
+    *ngIf="(store.derivedRequirementsEvaluation$ | async) || (store.workProductsEvaluation$ | async)"
+    >
+    <app-evaluation-stats
+    [derivedRequirements]="store.derivedRequirementsEvaluation$ | async"
+    [workProducts]="store.workProductsEvaluation$ | async"
+    ></app-evaluation-stats>
+</ng-container>
+
+<ng-container *ngIf="store.summaries$ | async as summaries">
+    <app-summary-evaluations
+        [summaries]="summaries"
+    ></app-summary-evaluations>
+</ng-container>

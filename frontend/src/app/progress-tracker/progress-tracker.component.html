@@ -1,0 +1,25 @@
+<div class="progress-container" *ngIf="progress$ | async as progress">
+  <mat-card class="progress-card">
+    <mat-card-content>
+      <div class="progress-header">
+        <h3>{{ getStatusText(progress) }}</h3>
+        <span class="progress-percentage">{{ progress.progress }}%</span>
+      </div>
+
+      <mat-progress-bar
+        [mode]="getProgressMode(progress)"
+        [value]="progress.progress"
+        [class.error]="progress.status === 'error'"
+      ></mat-progress-bar>
+
+      <div class="progress-details" *ngIf="progress.status === 'in_progress'">
+        <p class="current-section">{{ progress.current_section }}</p>
+        <p class="elapsed-time">Time elapsed: {{ getElapsedTime(progress.start_time) }}</p>
+      </div>
+
+      <p class="error-message" *ngIf="progress.status === 'error'">
+        {{ progress.error }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

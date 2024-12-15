@@ -1,0 +1,1057 @@
+{
+  "metadata": {
+    "formTitle": "Technical Evaluation Request and Response Form",
+    "formType": "Sole Source Less Than TINA Threshold - FAR 15.403-4",
+    "version": "1.0",
+    "instructions": {
+      "section1": "To be completed by the Contract Specialist prior to forwarding to Technical Evaluator",
+      "section2": "To be completed by both the Contract Specialist and Technical Evaluator",
+      "section3": "To be completed by the Technical Evaluator",
+      "section4": "To be completed, signed, and dated by the Technical Evaluator"
+    }
+  },
+  "evaluationQuestions": {
+    "generalInformation": {
+      "id": "section1",
+      "title": "General Information",
+      "description": "Basic information about the procurement and key contacts",
+      "questions": [
+        {
+          "id": "programTitle",
+          "label": "a. Program Title",
+          "query": "What is the program title associated with this procurement?",
+          "responseType": "text",
+          "formPath": "generalInformation.programTitle",
+          "required": true,
+          "aiEvaluation": {
+            "extractionStrategy": "Look for program name/title at beginning of document",
+            "sourceLocationRequired": true
+          }
+        },
+        {
+          "id": "contractsPOC",
+          "label": "b. Contracts POC",
+          "query": "Who is the Contracts Point of Contact?",
+          "responseType": "object",
+          "formPath": "generalInformation.contractsPOC",
+          "subfields": [
+            {
+              "id": "name",
+              "label": "Name",
+              "query": "What is the POC's name?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for POC name in contact information sections"
+              }
+            },
+            {
+              "id": "code",
+              "label": "Code",
+              "query": "What is the POC's code?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for organizational code near POC name"
+              }
+            },
+            {
+              "id": "telephone",
+              "label": "Telephone",
+              "query": "What is the POC's telephone number?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for telephone number in contact information"
+              }
+            }
+          ]
+        },
+        {
+          "id": "contractNumber",
+          "label": "c. Contract No.",
+          "query": "What is the contract number associated with this procurement?",
+          "responseType": "text",
+          "formPath": "generalInformation.contractNumber",
+          "required": true,
+          "aiEvaluation": {
+            "extractionStrategy": "Look for contract number in document header or reference sections",
+            "sourceLocationRequired": true
+          }
+        },
+        {
+          "id": "proposalTitle",
+          "label": "d. Proposal Title/No.",
+          "query": "What is the proposal title and/or number?",
+          "responseType": "text",
+          "formPath": "generalInformation.proposalTitle",
+          "required": true,
+          "aiEvaluation": {
+            "extractionStrategy": "Look for proposal title or reference number in document header",
+            "sourceLocationRequired": true
+          }
+        },
+        {
+          "id": "responseDate",
+          "label": "e. Required Response Date",
+          "query": "What is the required response date for this evaluation?",
+          "responseType": "date",
+          "formPath": "generalInformation.responseDate",
+          "format": "MM-dd-yyyy",
+          "required": true,
+          "aiEvaluation": {
+            "extractionStrategy": "Look for response deadline or due date",
+            "dateFormatValidation": true
+          }
+        },
+        {
+          "id": "contractor",
+          "label": "f. Contractor",
+          "query": "Who is the contractor for this procurement?",
+          "responseType": "object",
+          "formPath": "generalInformation.contractor",
+          "required": true,
+          "subfields": [
+            {
+              "id": "companyName",
+              "label": "Company Name",
+              "query": "What is the contractor's company name?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for company name in contractor information section"
+              }
+            },
+            {
+              "id": "city",
+              "label": "City",
+              "query": "In which city is the contractor located?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for city in contractor address"
+              }
+            },
+            {
+              "id": "state",
+              "label": "State",
+              "query": "In which state is the contractor located?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for state in contractor address"
+              }
+            }
+          ]
+        },
+        {
+          "id": "deliveryPeriod",
+          "label": "g. Delivery/Period of Performance",
+          "query": "What is the delivery date or period of performance?",
+          "responseType": "text",
+          "formPath": "generalInformation.deliveryPeriod",
+          "required": true,
+          "aiEvaluation": {
+            "extractionStrategy": "Look for delivery date or performance period in schedule section",
+            "validationRules": [
+              "Should include start and end dates if period of performance",
+              "Should be in MM-dd-yyyy format if specific date"
+            ]
+          }
+        },
+        {
+          "id": "technicalPOC",
+          "label": "h. Technical POC",
+          "query": "Who is the Technical Point of Contact?",
+          "responseType": "object",
+          "formPath": "generalInformation.technicalPOC",
+          "subfields": [
+            {
+              "id": "name",
+              "label": "Name",
+              "query": "What is the Technical POC's name?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for Technical POC in contact information"
+              }
+            },
+            {
+              "id": "code",
+              "label": "Code",
+              "query": "What is the Technical POC's code?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for organizational code near Technical POC"
+              }
+            },
+            {
+              "id": "telephone",
+              "label": "Telephone",
+              "query": "What is the Technical POC's telephone number?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for telephone number near Technical POC"
+              }
+            }
+          ]
+        },
+        {
+          "id": "programManager",
+          "label": "i. Program Manager",
+          "query": "Who is the Program Manager?",
+          "responseType": "object",
+          "formPath": "generalInformation.programManager",
+          "subfields": [
+            {
+              "id": "name",
+              "label": "Name",
+              "query": "What is the Program Manager's name?",
+              "responseType": "text",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for Program Manager in personnel/contact sections"
+              }
+            },
+            {
+              "id": "code",
+              "label": "Code",
+              "query": "What is the Program Manager's code?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for organizational code near Program Manager"
+              }
+            },
+            {
+              "id": "telephone",
+              "label": "Telephone",
+              "query": "What is the Program Manager's telephone number?",
+              "responseType": "text",
+              "aiEvaluation": {
+                "extractionStrategy": "Look for telephone number near Program Manager"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "technicalEvaluation": {
+      "id": "section2",
+      "title": "Technical Evaluation Findings",
+      "subsections": {
+        "labor": {
+          "id": "laborSection",
+          "title": "A. LABOR",
+          "questions": [
+            {
+              "id": "proposedHours",
+              "label": "Proposed Hours",
+              "query": "What are the total labor hours proposed by the contractor?",
+              "responseType": "number",
+              "formPath": "technicalEvaluation.labor.proposedHours",
+              "required": true,
+              "aiEvaluation": {
+                "extractionStrategy": "Look for total proposed labor hours in staffing or cost sections",
+                "sourceLocationRequired": true
+              }
+            },
+            {
+              "id": "recommendedHours",
+              "label": "Recommended Hours",
+              "query": "What are the total labor hours recommended based on technical evaluation?",
+              "responseType": "number",
+              "formPath": "technicalEvaluation.labor.recommendedHours",
+              "required": true,
+              "conditionalLogic": {
+                "dependsOn": "laborHoursSummary.acceptable",
+                "defaultValue": "proposedHours",
+                "rules": [
+                  {
+                    "when": "acceptable === true",
+                    "value": "proposedHours"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "laborHoursSummary",
+              "query": "Analyze the proposed labor hours. Are they technically acceptable?",
+              "responseType": "acceptability",
+              "formPath": "technicalEvaluation.labor.acceptable",
+              "required": true,
+              "aiEvaluation": {
+                "requiresJustification": true,
+                "acceptableBases": [
+                  {
+                    "id": "sameOrSimilar",
+                    "label": "Same or Similar Effort",
+                    "additionalFields": [
+                      {
+                        "id": "contractNumber",
+                        "query": "What is the associated contract number being used for comparison?",
+                        "responseType": "text",
+                        "required": true
+                      }
+                    ]
+                  },
+                  {
+                    "id": "estimatingMethod",
+                    "label": "Estimating Method/Software Model",
+                    "additionalFields": [
+                      {
+                        "id": "methodology",
+                        "query": "Describe the methodology used and findings that determined acceptability",
+                        "responseType": "text",
+                        "required": true
+                      }
+                    ]
+                  },
+                  {
+                    "id": "expertise",
+                    "label": "Subject Matter Expertise",
+                    "additionalFields": [
+                      {
+                        "id": "credentials",
+                        "query": "What are the unique credentials qualifying this evaluation?",
+                        "responseType": "text",
+                        "required": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "questionedHours",
+              "query": "For any questioned labor hours, provide details and justification",
+              "responseType": "table",
+              "formPath": "technicalEvaluation.labor.questionedHours",
+              "conditionalDisplay": "laborHoursSummary.acceptable === false",
+              "tableStructure": {
+                "columns": [
+                  {
+                    "id": "fiscalYear",
+                    "label": "Fiscal Year",
+                    "type": "text"
+                  },
+                  {
+                    "id": "laborCategory",
+                    "label": "Labor Category",
+                    "type": "text"
+                  },
+                  {
+                    "id": "proposedHours",
+                    "label": "Labor Hours Proposed",
+                    "type": "number"
+                  },
+                  {
+                    "id": "recommendedHours",
+                    "label": "Recommended Labor Hours",
+                    "type": "number"
+                  },
+                  {
+                    "id": "pageRef",
+                    "label": "Proposal Page Reference",
+                    "type": "text"
+                  }
+                ],
+                "explanationFields": [
+                  {
+                    "id": "explanation",
+                    "label": "Explanation for Questioned Hours",
+                    "type": "textarea",
+                    "required": true
+                  },
+                  {
+                    "id": "justification",
+                    "label": "Justification for Recommended Hours",
+                    "type": "textarea",
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ],
+          "validationRules": [
+            {
+              "rule": "recommendedHours <= proposedHours",
+              "message": "Recommended hours cannot exceed proposed hours without justification"
+            },
+            {
+              "rule": "proposedHours > 0",
+              "message": "Proposed hours must be greater than zero"
+            },
+            {
+              "rule": "recommendedHours > 0",
+              "message": "Recommended hours must be greater than zero"
+            }
+          ]
+        },
+        "materials": {
+          "id": "materialsSection",
+          "title": "B. MATERIALS",
+          "questions": [
+            {
+              "id": "materialsPurpose",
+              "label": "Purpose for Materials",
+              "query": "What is the purpose for the proposed materials? Address why the materials are necessary to perform the effort.",
+              "responseType": "textarea",
+              "formPath": "technicalEvaluation.materials.purpose",
+              "required": true,
+              "placeholder": "Address why the materials are necessary to perform the effort",
+              "aiEvaluation": {
+                "extractionPoints": [
+                  "Material descriptions",
+                  "Intended use cases",
+                  "Technical requirements",
+                  "Project dependencies"
+                ],
+                "analysisGuidelines": [
+                  "Evaluate necessity for scope",
+                  "Assess technical appropriateness",
+                  "Consider alternatives",
+                  "Identify dependencies"
+                ],
+                "requiresSourceCitation": true
+              }
+            },
+            {
+              "id": "materialsTechnicalAcceptability",
+              "label": "All Types and Quantities Technically Acceptable?",
+              "query": "Are the types and quantities of materials proposed technically acceptable?",
+              "responseType": "acceptability",
+              "formPath": "technicalEvaluation.materials.acceptable",
+              "required": true,
+              "aiEvaluation": {
+                "requiresJustification": true,
+                "acceptanceCriteria": [
+                  {
+                    "id": "typesJustification",
+                    "label": "Types Justification",
+                    "query": "Why are the types of materials proposed appropriate or inappropriate?",
+                    "responseType": "textarea",
+                    "required": true,
+                    "evaluationPoints": [
+                      "Technical specifications match requirements",
+                      "Industry standard materials",
+                      "Compatibility with existing systems",
+                      "Quality standards compliance"
+                    ]
+                  },
+                  {
+                    "id": "amountJustification",
+                    "label": "Amount Justification",
+                    "query": "Why are the quantities of materials proposed appropriate or inappropriate?",
+                    "responseType": "textarea",
+                    "required": true,
+                    "evaluationPoints": [
+                      "Quantity aligns with scope",
+                      "Historical usage data comparison",
+                      "Waste factor consideration",
+                      "Contingency requirements"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "questionedMaterials",
+              "label": "Questioned Materials Details",
+              "query": "For materials being questioned, provide specific details about types and quantities",
+              "responseType": "table",
+              "formPath": "technicalEvaluation.materials.questionedItems",
+              "conditionalDisplay": "materialsTechnicalAcceptability.acceptable === false",
+              "tableStructure": {
+                "columns": [
+                  {
+                    "id": "fiscalYear",
+                    "label": "Fiscal Year",
+                    "type": "text",
+                    "required": true
+                  },
+                  {
+                    "id": "materialType",
+                    "label": "Types of Materials",
+                    "type": "text",
+                    "required": true
+                  },
+                  {
+                    "id": "proposedQty",
+                    "label": "Quantity Proposed",
+                    "type": "number",
+                    "required": true,
+                    "validation": ["min:0"]
+                  },
+                  {
+                    "id": "recommendedQty",
+                    "label": "Quantity Recommended",
+                    "type": "number",
+                    "required": true,
+                    "validation": ["min:0"]
+                  },
+                  {
+                    "id": "pageRef",
+                    "label": "Proposal Page Reference",
+                    "type": "text",
+                    "required": true
+                  }
+                ],
+                "explanationFields": [
+                  {
+                    "id": "questionedMaterialsExplanation",
+                    "label": "Explanation for Questioned Materials",
+                    "query": "Please explain why the types and/or quantities of materials proposed are not appropriate to perform the effort",
+                    "type": "textarea",
+                    "required": true,
+                    "evaluationGuidelines": [
+                      "Cite specific technical deficiencies",
+                      "Reference industry standards",
+                      "Quantify discrepancies",
+                      "Identify risks"
+                    ]
+                  },
+                  {
+                    "id": "recommendedMaterialsJustification",
+                    "label": "Justification for Recommended Materials",
+                    "query": "Please explain why the types and/or quantities of materials being recommended are appropriate to perform the effort",
+                    "type": "textarea",
+                    "required": true,
+                    "evaluationGuidelines": [
+                      "Provide technical rationale",
+                      "Reference similar projects",
+                      "Explain quantity calculations",
+                      "Address risk mitigation"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "validationRules": [
+            {
+              "rule": "recommendedQty <= proposedQty",
+              "message": "Recommended quantity cannot exceed proposed quantity without justification"
+            }
+          ]
+        },
+        "travel": {
+          "id": "travelSection",
+          "title": "C. TRAVEL",
+          "questions": [
+            {
+              "id": "travelPurpose",
+              "label": "Purpose for Travel",
+              "query": "What is the purpose for the proposed travel? Address why the travel is necessary to perform the effort.",
+              "responseType": "textarea",
+              "formPath": "technicalEvaluation.travel.purpose",
+              "required": true
+            },
+            {
+              "id": "travelAcceptability",
+              "label": "Travel Elements Technically Acceptable",
+              "query": "Are all travel elements (number of trips, days, travelers) technically acceptable?",
+              "responseType": "acceptability",
+              "formPath": "technicalEvaluation.travel.acceptable",
+              "required": true,
+              "aiEvaluation": {
+                "requiresJustification": true,
+                "evaluationPoints": [
+                  "Number of trips justification",
+                  "Trip duration justification",
+                  "Number of travelers justification"
+                ]
+              }
+            },
+            {
+              "id": "questionedTravel",
+              "label": "Questioned Travel Details",
+              "query": "For travel being questioned, provide specific details",
+              "responseType": "table",
+              "formPath": "technicalEvaluation.travel.questionedItems",
+              "conditionalDisplay": "travelAcceptability.acceptable === false",
+              "tableStructure": {
+                "columns": [
+                  {
+                    "id": "fiscalYear",
+                    "label": "Fiscal Year",
+                    "type": "text"
+                  },
+                  {
+                    "id": "destination",
+                    "label": "Destination",
+                    "type": "text"
+                  },
+                  {
+                    "id": "proposedTrips",
+                    "label": "Number of Trips Proposed",
+                    "type": "number"
+                  },
+                  {
+                    "id": "recommendedTrips",
+                    "label": "Number of Trips Recommended",
+                    "type": "number"
+                  },
+                  {
+                    "id": "proposedDays",
+                    "label": "Number of Days Proposed",
+                    "type": "number"
+                  },
+                  {
+                    "id": "recommendedDays",
+                    "label": "Number of Days Recommended",
+                    "type": "number"
+                  },
+                  {
+                    "id": "proposedTravelers",
+                    "label": "Number of Travelers Proposed",
+                    "type": "number"
+                  },
+                  {
+                    "id": "recommendedTravelers",
+                    "label": "Number of Travelers Recommended",
+                    "type": "number"
+                  },
+                  {
+                    "id": "pageRef",
+                    "label": "Proposal Page Reference",
+                    "type": "text"
+                  }
+                ],
+                "explanationFields": [
+                  {
+                    "id": "explanation",
+                    "label": "Explanation for Questioned Travel",
+                    "type": "textarea",
+                    "required": true
+                  },
+                  {
+                    "id": "justification",
+                    "label": "Justification for Recommended Travel",
+                    "type": "textarea",
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "otherDirectCosts": {
+          "id": "odcSection",
+          "title": "D. OTHER DIRECT COSTS (ODC)",
+          "questions": [
+            {
+              "id": "odcList",
+              "label": "Listed ODCs for Evaluation",
+              "query": "What ODCs are listed for evaluation?",
+              "responseType": "array",
+              "formPath": "technicalEvaluation.odc.list",
+              "required": true
+            },
+            {
+              "id": "odcAcceptability",
+              "label": "ODCs Technically Acceptable",
+              "query": "Are all ODCs technically acceptable?",
+              "responseType": "acceptability",
+              "formPath": "technicalEvaluation.odc.acceptable",
+              "required": true,
+              "aiEvaluation": {
+                "requiresJustification": true
+              }
+            },
+            {
+              "id": "questionedODCs",
+              "label": "Questioned ODCs",
+              "query": "For ODCs being questioned, provide details",
+              "responseType": "table",
+              "formPath": "technicalEvaluation.odc.questionedItems",
+              "conditionalDisplay": "odcAcceptability.acceptable === false",
+              "tableStructure": {
+                "columns": [
+                  {
+                    "id": "fiscalYear",
+                    "label": "Fiscal Year",
+                    "type": "text"
+                  },
+                  {
+                    "id": "odcType",
+                    "label": "Type of ODC",
+                    "type": "text"
+                  },
+                  {
+                    "id": "proposedQuantity",
+                    "label": "Quantity Proposed",
+                    "type": "number"
+                  },
+                  {
+                    "id": "recommendedQuantity",
+                    "label": "Quantity Recommended",
+                    "type": "number"
+                  },
+                  {
+                    "id": "pageRef",
+                    "label": "Proposal Page Reference",
+                    "type": "text"
+                  }
+                ],
+                "explanationFields": [
+                  {
+                    "id": "explanation",
+                    "label": "Explanation for Questioned ODCs",
+                    "type": "textarea",
+                    "required": true
+                  },
+                  {
+                    "id": "justification",
+                    "label": "Justification for Recommended ODCs",
+                    "type": "textarea",
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "termsAndConditions": {
+          "id": "termsSection",
+          "title": "E. CONTRACTOR TERMS AND CONDITIONS OR GROUND RULES/ASSUMPTIONS",
+          "questions": [
+            {
+              "id": "exceptions",
+              "label": "Government Terms Exceptions",
+              "query": "Did the contractor take exception to any Government terms and conditions?",
+              "responseType": "boolean",
+              "formPath": "technicalEvaluation.terms.hasExceptions",
+              "required": true,
+              "additionalFields": [
+                {
+                  "id": "exceptionsList",
+                  "label": "List Exceptions",
+                  "responseType": "textarea",
+                  "conditionalDisplay": "exceptions === true"
+                }
+              ]
+            },
+            {
+              "id": "governmentCompliance",
+              "label": "Government Compliance",
+              "query": "Can the Government comply with all the terms and conditions and/or ground rules/assumptions proposed?",
+              "responseType": "boolean",
+              "formPath": "technicalEvaluation.terms.canComply",
+              "required": true,
+              "additionalFields": [
+                {
+                  "id": "nonCompliantTerms",
+                  "label": "Non-compliant Terms",
+                  "responseType": "textarea",
+                  "conditionalDisplay": "governmentCompliance === false"
+                }
+              ]
+            },
+            {
+              "id": "bestInterest",
+              "label": "Government Best Interest",
+              "query": "Is it in the Government's best interest to accept all the terms and conditions and/or ground rules/assumptions proposed?",
+              "responseType": "boolean",
+              "formPath": "technicalEvaluation.terms.inBestInterest",
+              "required": true,
+              "additionalFields": [
+                {
+                  "id": "riskAssessment",
+                  "label": "Risk Assessment",
+                  "responseType": "textarea",
+                  "conditionalDisplay": "bestInterest === false"
+                },
+                {
+                  "id": "termsToNegotiate",
+                  "label": "Terms to Negotiate",
+                  "responseType": "textarea",
+                  "conditionalDisplay": "bestInterest === false"
+                }
+              ]
+            },
+            {
+              "id": "alternateTerms",
+              "label": "Alternate Terms",
+              "query": "What alternate terms and conditions can the Government offer the contractor?",
+              "responseType": "textarea",
+              "formPath": "technicalEvaluation.terms.alternateTerms",
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "supportingInformation": {
+      "id": "section3",
+      "title": "Supporting Technical Information",
+      "description": "List referenced documents and provide required attachments",
+      "questions": [
+        {
+          "id": "references",
+          "query": "List any documents referenced during the evaluation (e.g., initial contractor proposal, contractor proposal revisions, Independent Government Cost Estimate (IGCE), etc.)",
+          "responseType": "dynamicArray",
+          "formPath": "supportingInformation.references",
+          "required": true,
+          "arrayItemStructure": {
+            "fields": [
+              {
+                "id": "documentTitle",
+                "label": "Document Title",
+                "responseType": "text",
+                "required": true,
+                "placeholder": "Enter document title"
+              },
+              {
+                "id": "date",
+                "label": "Date",
+                "responseType": "date",
+                "required": true,
+                "format": "MM-dd-yyyy",
+                "validation": {
+                  "pastDateOnly": true
+                }
+              },
+              {
+                "id": "description",
+                "label": "Description",
+                "responseType": "textarea",
+                "required": true,
+                "placeholder": "Describe the document's relevance to the evaluation"
+              }
+            ]
+          }
+        },
+        {
+          "id": "standardAttachments",
+          "query": "Check all applicable standard attachments",
+          "responseType": "checkboxGroup",
+          "formPath": "supportingInformation.standardAttachments",
+          "required": true,
+          "options": [
+            {
+              "id": "dd254",
+              "label": "DD Form 254, Contract Security Classification Specification"
+            },
+            {
+              "id": "gfe",
+              "label": "List of Government Furnished Equipment"
+            },
+            {
+              "id": "cor",
+              "label": "COR Nomination(s)/Technical Point of Contact (TPOC) Information"
+            },
+            {
+              "id": "cdrl",
+              "label": "Contract Data Requirements List (CDRL) Addresses"
+            },
+            {
+              "id": "funding",
+              "label": "Funding Schedule (if incrementally funded)"
+            }
+          ]
+        },
+        {
+          "id": "otherAttachments",
+          "query": "List any additional attachments needed to support the evaluation",
+          "responseType": "dynamicArray",
+          "formPath": "supportingInformation.otherAttachments",
+          "arrayItemStructure": {
+            "fields": [
+              {
+                "id": "attachmentTitle",
+                "label": "Attachment Title",
+                "responseType": "text",
+                "required": true,
+                "placeholder": "Enter attachment title"
+              },
+              {
+                "id": "description",
+                "label": "Description",
+                "responseType": "textarea",
+                "required": true,
+                "placeholder": "Describe the purpose of this attachment"
+              },
+              {
+                "id": "fileName",
+                "label": "File Name",
+                "responseType": "text",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "id": "fileUpload",
+                "label": "Upload File",
+                "responseType": "file",
+                "required": true,
+                "allowedFileTypes": [
+                  ".pdf",
+                  ".doc",
+                  ".docx",
+                  ".xls",
+                  ".xlsx"
+                ],
+                "maxFileSize": "10MB"
+              }
+            ]
+          }
+        }
+      ],
+      "validationRules": [
+        {
+          "rule": "At least one reference or attachment must be provided",
+          "condition": "references.length > 0 || standardAttachments.length > 0 || otherAttachments.length > 0"
+        }
+      ]
+    },
+    "recommendation": {
+      "id": "section4",
+      "title": "Recommendation",
+      "description": "Technical evaluator's final recommendation and signature",
+      "questions": [
+        {
+          "id": "areasToNegotiate",
+          "label": "a. Summary of Areas to Negotiate",
+          "query": "What specific proposal areas are recommended for negotiation?",
+          "responseType": "chipMultiSelect",
+          "formPath": "recommendation.areasToNegotiate",
+          "required": true,
+          "description": "Provide a summary list of the specific proposal areas that are recommended for negotiation",
+          "options": [
+            "Labor Hours",
+            "Labor Categories",
+            "Material Types",
+            "Material Quantities",
+            "Travel Requirements",
+            "ODC Items",
+            "Terms and Conditions"
+          ],
+          "allowCustom": true,
+          "customValueLabel": "Additional Areas",
+          "aiEvaluation": {
+            "extractionStrategy": "Identify areas marked as questioned or requiring negotiation in previous sections"
+          }
+        },
+        {
+          "id": "additionalComments",
+          "label": "b. Additional Comments",
+          "query": "Provide any additional comments regarding the technical evaluation",
+          "responseType": "textarea",
+          "formPath": "recommendation.additionalComments",
+          "required": true,
+          "description": "Include any additional comments not captured elsewhere",
+          "placeholder": "Enter any additional technical evaluation comments",
+          "aiEvaluation": {
+            "analysisPoints": [
+              "Overall technical assessment",
+              "Key strengths and weaknesses",
+              "Risk considerations",
+              "Implementation concerns"
+            ]
+          }
+        },
+        {
+          "id": "preparer",
+          "label": "c. Prepared By",
+          "query": "Who prepared this evaluation?",
+          "responseType": "object",
+          "formPath": "recommendation.preparer",
+          "required": true,
+          "description": "Technical evaluator's information",
+          "subfields": [
+            {
+              "id": "name",
+              "label": "Name",
+              "responseType": "text",
+              "required": true,
+              "placeholder": "Enter full name"
+            },
+            {
+              "id": "title",
+              "label": "Title",
+              "responseType": "text",
+              "required": true,
+              "placeholder": "Enter position title"
+            },
+            {
+              "id": "extension",
+              "label": "Extension",
+              "responseType": "text",
+              "required": true,
+              "placeholder": "Enter phone extension",
+              "validation": {
+                "pattern": "^[0-9-x]+$",
+                "message": "Enter a valid phone extension"
+              }
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "label": "d. Signature",
+          "query": "Provide digital signature",
+          "responseType": "signature",
+          "formPath": "recommendation.signature",
+          "required": true,
+          "description": "Digital signature of technical evaluator",
+          "subfields": [
+            {
+              "id": "signatureData",
+              "label": "Digital Signature",
+              "responseType": "text",
+              "required": true
+            },
+            {
+              "id": "signatureId",
+              "label": "Digital Signature ID",
+              "responseType": "text",
+              "required": false
+            },
+            {
+              "id": "signatureDate",
+              "label": "Signature Timestamp",
+              "responseType": "datetime",
+              "required": true,
+              "format": "MM-dd-yyyy HH:mm:ss"
+            }
+          ],
+          "validation": {
+            "requiresAuthentication": true
+          }
+        },
+        {
+          "id": "date",
+          "label": "e. Date",
+          "query": "What is the completion date?",
+          "responseType": "date",
+          "formPath": "recommendation.date",
+          "required": true,
+          "description": "Date of evaluation completion",
+          "format": "MM-dd-yyyy",
+          "validation": {
+            "notFutureDate": true,
+            "message": "Completion date cannot be in the future"
+          }
+        }
+      ],
+      "validationRules": [
+        {
+          "rule": "date must be >= all referenced documents dates",
+          "message": "Completion date must not precede referenced document dates"
+        },
+        {
+          "rule": "signature.signatureDate must match date",
+          "message": "Signature date must match completion date"
+        },
+        {
+          "rule": "if areasToNegotiate not empty, additionalComments should reference these areas",
+          "message": "Additional comments should address recommended negotiation areas"
+        }
+      ],
+      "requiredAttachments": [],
+      "crossSectionValidation": [
+        {
+          "rule": "areasToNegotiate should reflect questioned items from other sections",
+          "message": "Negotiation areas should align with technical evaluation findings"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+    "name": "Cost Analysis Methods",
+    "additional_info": "**Methods in Price Analysis can also be used for at the cost element level in cost analysis**",
+    "methods": [
+    {
+        "id": 0,
+        "name": "Analogy",
+        "description": "Similar to Price Analysis Comparison. Are form, fit & function alike? Are we at a similar point in development/the life cycle? Are adjustments needed (Ex.: complexity, technology, weight, throughput, etc.) Subjective so detailed explanations are necessary. Explain risk, provide single/multiple historical data points."
+      },
+      {
+        "id": 1,
+        "name": "Bottoms-up/Engineering estimating",
+        "description": "reflects a build-up of labor, material, ODCs, and overhead costs. Is the cost/schedule data used appropriate? What are the qualifications of the SMEs?"
+      },
+      {
+        "id": 2,
+        "name": "Extrapolation",
+        "description": "Trend analysis from actual costs incurred (average by lot, projected cost growth). Are there sufficient data points to establish a trend? What is the risk level associated with the available data?"
+      },
+      {
+        "id": 3,
+        "name": "Judgment",
+        "description": "Estimate created by an expert, usually as a sanity check against another method. What are the qualifications of the expert? Is the basis of the estimate logical/credible?"
+      },
+      {
+        "id": 4,
+        "name": "Manloading/Manyears",
+        "description": "Use common sense/reasonableness test/sanity check. Compute hours across period of performance to determine if it makes sense. Watch for managerial language (monitor, coordinate, interface, support) as this is typically higher level and should be no more than 10% of the hours for the staff doing the actual work. What specific tasks are required? FT v. PT: partial MY manpower should be utilized elsewhere not bid FT; ensure BOEs are specific"
+      },
+      {
+        "id": 5,
+        "name": "Standards & Realization Factors",
+        "description": "Standards are goals for efficient operations; RFs measure actual performance (includes learning, scrap, rework, machinery downtime). To develop standards, detailed cost information is available, as is learning curve data. Ask if standards are being developed/used/current? By what method they were developed? Are they from similar efforts? What efforts control variance and what is the variance? Is this the most appropriate method for forecasting the costs? Review the RF pool and base and underlying data to develop a range of appropriate costs. Remove scrap/rework. Challenge those with differing production states, product maturity, complexity, technological development, etc."
+      },
+      {
+        "id": 6,
+        "name": "Projections from Actuals/Other Programs",
+        "description": "Available through EVMS data, request in RFP, pull from CDRL deliverables, invoicing, etc. Actuals can reflect inefficiencies. Remove non-recurring hours/materials, etc."
+      },
+      {
+        "id": 7,
+        "name": "Learning/Improvement Curves",
+        "description": "Predicts future production costs: the unit cost decreases by X% each time production quantities double. Used with significant manufacturing quantities, heavy labor component, uninterrupted production, no major technological change. DAU & DCAA have estimating models & programs & excel works to determine percentage of cost decrease and projected cost of ordered quantities. What data was used to estimate the cost of unit 1 and the slope of the curve?"
+      },
+      {
+        "id": 8,
+        "name": "Quantity Curves/Economies of Scale",
+        "description": "Average cost of product decreases as output increases. Best for material production; fixed costs are shared amongst the increased quantity thereby decreasing the price. Use when historical data for other quantities are available. DAU has tools, training, etc."
+      },
+      {
+        "id": 9,
+        "name": "CARs/PARs",
+        "description": "For subcontracted efforts > $700K the contractor must provide a Cost Analysis Report (for noncommercial items) or a Price Analysis Report (for commercial items). The technical evaluator can review and provide agreements, disagreements with logic, elements, methods, and results and provide associated adjustments."
+      },
+      {
+        "id": 10,
+        "name": "DCMA/DCAA & C/PA Field Pricing or Code 4.2 Price Fighters Assistance",
+        "description": "Professional C/PA can be requested if sufficient time is available to receive results (usually at least 45 days). The Technical Evaluator can then review, analyze and provide adjustments to the DCMA/DCAA/Code 4.2 recommendations."
+      }
+]
+}

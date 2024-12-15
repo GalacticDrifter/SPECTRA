@@ -1,0 +1,42 @@
+<mat-expansion-panel class="qa-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Evaluation Criteria
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ getMetCount() }} Met / {{ getNotMetCount() }} Not Met / {{ getPartiallyMetCount() }} Partially Met
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="qa-container">
+      <div *ngFor="let item of qaItems" class="qa-item">
+        <mat-card>
+          <mat-card-content>
+            <div class="qa-header">
+              <div class="status-icon" [matTooltip]="item.answer">
+                <mat-icon *ngIf="item.answer === 'Met'" class="icon-success">
+                  check_circle
+                </mat-icon>
+                <mat-icon *ngIf="item.answer === 'Partially Met'" class="icon-warning">
+                  warning
+                </mat-icon>
+                <mat-icon *ngIf="item.answer === 'Not Met'" class="icon-error">
+                  error
+                </mat-icon>
+              </div>
+              <div class="query-text">
+                {{ item.query }}
+              </div>
+            </div>
+            
+            <mat-divider class="my-3"></mat-divider>
+            
+            <div class="justification">
+              <strong>Justification:</strong>
+              <p>{{ item.justification }}</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-expansion-panel>

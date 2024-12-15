@@ -1,0 +1,9 @@
+__pycache__
+
+WindowsPowerShell/profile.ps1
+
+logs/**
+__pycache__/**
+results/**
+projects.json
+uploads/**
